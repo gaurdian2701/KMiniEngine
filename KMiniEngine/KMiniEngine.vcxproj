@@ -21,11 +21,11 @@
   <ItemGroup>
     <ClInclude Include="src\Engine\Application.h" />
     <ClInclude Include="src\Engine\Core.h" />
+    <ClInclude Include="src\Engine\EntryPoint.h" />
     <ClInclude Include="src\KMiniEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp" />
-    <ClCompile Include="src\Engine\EntryPoint.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -4,8 +4,11 @@
 
 extern KMiniEngine::Application* KMiniEngine::CreateApplication();
 
-int main(int argc, char** argv)
+int RunEngine()
 {
+	KMiniEngine::Application* application = KMiniEngine::CreateApplication();
+	application->Run();
+	delete application;
 	return 0;
 }
 #endif

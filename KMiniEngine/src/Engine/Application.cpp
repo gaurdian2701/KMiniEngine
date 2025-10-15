@@ -10,7 +10,7 @@ namespace KMiniEngine
 	{
 	}
 
-	void Run()
+	void Application::Run()
 	{
 	}	
 }

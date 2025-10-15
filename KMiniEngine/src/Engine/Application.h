@@ -8,10 +8,10 @@ namespace KMiniEngine
 	public:
 		Application();
 		~Application();
-		virtual void Run();
+		void Run();
 	};
 
 	Application* CreateApplication();
-}
+};
 
 

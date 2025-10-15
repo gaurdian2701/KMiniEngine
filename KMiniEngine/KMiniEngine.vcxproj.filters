@@ -15,20 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\KMiniEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\EntryPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\EntryPoint.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
