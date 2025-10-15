@@ -6,7 +6,6 @@
 	#else
 		#define KMINIENGINE_API __declspec(dllimport)
 	#endif
-
 #else 
 	#error Windows is the only supported platform!
 #endif 
