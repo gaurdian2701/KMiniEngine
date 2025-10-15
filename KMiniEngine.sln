@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KMiniEngine", "KMiniEngine\KMiniEngine.vcxproj", "{5A0814EE-5B8F-4487-8D12-8D371F8DA3E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Grass Rendering", "Grass Rendering\Grass Rendering.vcxproj", "{BB85177B-09A4-49FF-B974-D0EF980AE65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A0814EE-5B8F-4487-8D12-8D371F8DA3E3}.Debug|x64.ActiveCfg = Debug|x64
+		{5A0814EE-5B8F-4487-8D12-8D371F8DA3E3}.Debug|x64.Build.0 = Debug|x64
+		{5A0814EE-5B8F-4487-8D12-8D371F8DA3E3}.Release|x64.ActiveCfg = Release|x64
+		{5A0814EE-5B8F-4487-8D12-8D371F8DA3E3}.Release|x64.Build.0 = Release|x64
+		{BB85177B-09A4-49FF-B974-D0EF980AE65F}.Debug|x64.ActiveCfg = Debug|x64
+		{BB85177B-09A4-49FF-B974-D0EF980AE65F}.Debug|x64.Build.0 = Debug|x64
+		{BB85177B-09A4-49FF-B974-D0EF980AE65F}.Release|x64.ActiveCfg = Release|x64
+		{BB85177B-09A4-49FF-B974-D0EF980AE65F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A599E3D7-05C1-4E57-97D0-62D823F84A03}
+	EndGlobalSection
+EndGlobal
