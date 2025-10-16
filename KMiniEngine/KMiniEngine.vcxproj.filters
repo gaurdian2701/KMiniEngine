@@ -3317,6 +3317,8 @@
     <None Include="Vendor\include\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Vendor\include\imgui\imgui.ini" />
+    <None Include="Vendor\include\imgui\imgui.natstepfilter" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Dependencies\lib\assimp-vc143-mtd.lib" />
@@ -3324,6 +3326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="Dependencies\include\imgui\imgui.natvis" />
+    <Natvis Include="Vendor\include\imgui\imgui.natvis" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Dependencies\include\glm\CMakeLists.txt" />
