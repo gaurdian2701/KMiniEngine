@@ -1,6 +1,5 @@
 #pragma once
 #include "Application.h"
-#ifdef TARGET_PLATFORM_WINDOWS
 
 extern KMiniEngine::Application* KMiniEngine::CreateApplication();
 
@@ -11,4 +10,3 @@ int RunEngine()
 	delete application;
 	return 0;
 }
-#endif
