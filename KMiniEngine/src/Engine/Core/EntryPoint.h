@@ -1,11 +1,11 @@
 #pragma once
-#include "Application.h"
+#include "../Application/Application.h"
 
-extern KMiniEngine::Application* KMiniEngine::CreateApplication();
+extern Application* CreateApplication();
 
 int RunEngine()
 {
-	KMiniEngine::Application* application = KMiniEngine::CreateApplication();
+	Application* application = CreateApplication();
 	application->Run();
 	delete application;
 	return 0;

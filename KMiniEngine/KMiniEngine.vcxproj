@@ -19,14 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Core\Application.h" />
+    <ClInclude Include="src\Engine\Application\Application.h" />
+    <ClInclude Include="src\Engine\Application\Window.h" />
+    <ClInclude Include="src\Engine\Assets\Primitive Geometry\StaticObject.h" />
     <ClInclude Include="src\Engine\Core\EntryPoint.h" />
-    <ClInclude Include="src\Engine\FileHandling\FileHandler.h" />
+    <ClInclude Include="src\Engine\Core\Layer.h" />
+    <ClInclude Include="src\Engine\IO\FileSystem\FileHandler.h" />
+    <ClInclude Include="src\Engine\Renderer\Camera\Camera.h" />
+    <ClInclude Include="src\Engine\Renderer\RenderConfigs.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
-    <ClInclude Include="src\Engine\Renderer\Shader\Config.h" />
     <ClInclude Include="src\Engine\Renderer\Shader\Shader.h" />
     <ClInclude Include="src\Engine\Renderer\Shader\ShaderHandler.h" />
     <ClInclude Include="src\Engine\Renderer\Shader\ShaderProgram.h" />
+    <ClInclude Include="src\Engine\Resources\Model Loading\Mesh.h" />
+    <ClInclude Include="src\Engine\Resources\Model Loading\Model.h" />
     <ClInclude Include="src\KMiniEngine.h" />
     <ClInclude Include="Vendor\include\assimp\aabb.h" />
     <ClInclude Include="Vendor\include\assimp\ai_assert.h" />
@@ -418,12 +424,16 @@
     <ClInclude Include="Vendor\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Core\Application.cpp" />
-    <ClCompile Include="src\Engine\FileHandling\FileHandler.cpp" />
-    <ClCompile Include="src\Engine\Renderer\glad.c" />
+    <ClCompile Include="src\Engine\Application\Application.cpp" />
+    <ClCompile Include="src\Engine\Application\Window.cpp" />
+    <ClCompile Include="src\Engine\IO\FileSystem\FileHandler.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Camera\Camera.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\ShaderHandler.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\ShaderProgram.cpp" />
+    <ClCompile Include="src\Engine\Resources\Model Loading\Mesh.cpp" />
+    <ClCompile Include="src\Engine\Resources\Model Loading\Model.cpp" />
     <ClCompile Include="Vendor\include\glm\detail\glm.cpp" />
     <ClCompile Include="Vendor\include\glm\glm.cppm" />
     <ClCompile Include="Vendor\include\imgui\imgui.cpp" />
@@ -585,6 +595,9 @@
     <None Include="Vendor\include\glm\gtx\vector_angle.inl" />
     <None Include="Vendor\include\glm\gtx\vector_query.inl" />
     <None Include="Vendor\include\glm\gtx\wrap.inl" />
+    <None Include="Vendor\lib\assimp-vc143-mtd.dll" />
+    <None Include="Vendor\lib\assimp-vc143-mtd.exp" />
+    <None Include="Vendor\lib\glfw3.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Vendor\lib\assimp-vc143-mtd.lib" />
@@ -702,8 +715,7 @@
       <AdditionalLibraryDirectories>$(ProjectDir)Vendor\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(OutDir)KMiniEngine.lib" "$(SolutionDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -727,6 +739,9 @@
     <Lib>
       <AdditionalLibraryDirectories>$(ProjectDir)Vendor\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(OutDir)KMiniEngine.lib" "$(SolutionDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

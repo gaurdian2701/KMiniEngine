@@ -1,6 +1,6 @@
 #include "ShaderHandler.h"
-#include "Config.h"
-#include "../../FileHandling/FileHandler.h"
+#include "../RenderConfigs.h"
+#include "../../IO/FileSystem/FileHandler.h"
 #include "Shader.h"
 
 ShaderHandler::ShaderHandler(FileHandler& fileHandler)

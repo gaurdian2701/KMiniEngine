@@ -119,8 +119,7 @@
       <AdditionalDependencies>KMiniEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>move /Y "$(SolutionDir)KMiniEngine.lib" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,11 +139,16 @@
       <AdditionalDependencies>KMiniEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy \y \d "$(SolutionDir)bin\x64-Release\KMiniEngine\KMiniEngine.dll" "$(OutDir)"</Command>
+      <Command>move /Y "$(SolutionDir)KMiniEngine.lib" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\GrassRenderingApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KMiniEngine\KMiniEngine.vcxproj">
+      <Project>{5a0814ee-5b8f-4487-8d12-8d371f8da3e3}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

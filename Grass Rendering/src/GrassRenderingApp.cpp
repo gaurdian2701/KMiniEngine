@@ -1,6 +1,7 @@
 #include "KMiniEngine.h"
 
-class GrassRenderApp : public KMiniEngine::Application
+
+class GrassRenderApp : public Application
 {
 public:
 	GrassRenderApp()
@@ -9,9 +10,16 @@ public:
 	~GrassRenderApp()
 	{
 	}
+
+	void Run() override
+	{
+		while (true)
+		{
+		}
+	}
 };
 
-KMiniEngine::Application* KMiniEngine::CreateApplication()
+Application* CreateApplication()
 {
 	return new GrassRenderApp();
 }
