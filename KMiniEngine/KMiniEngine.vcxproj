@@ -22,10 +22,10 @@
     <ClInclude Include="src\Engine\Application\Application.h" />
     <ClInclude Include="src\Engine\Application\Window.h" />
     <ClInclude Include="src\Engine\Assets\Primitive Geometry\StaticObject.h" />
-    <ClInclude Include="src\Engine\Core\EntryPoint.h" />
+    <ClInclude Include="src\Engine\Core\EngineMain.h" />
     <ClInclude Include="src\Engine\Core\Layer.h" />
     <ClInclude Include="src\Engine\IO\FileSystem\FileHandler.h" />
-    <ClInclude Include="src\Engine\Renderer\Camera\Camera.h" />
+    <ClInclude Include="src\Engine\Scene\Camera\Camera.h" />
     <ClInclude Include="src\Engine\Renderer\RenderConfigs.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
     <ClInclude Include="src\Engine\Renderer\Shader\Shader.h" />
@@ -427,7 +427,7 @@
     <ClCompile Include="src\Engine\Application\Application.cpp" />
     <ClCompile Include="src\Engine\Application\Window.cpp" />
     <ClCompile Include="src\Engine\IO\FileSystem\FileHandler.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Camera\Camera.cpp" />
+    <ClCompile Include="src\Engine\Scene\Camera\Camera.cpp" />
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="src\Engine\Renderer\Shader\ShaderHandler.cpp" />

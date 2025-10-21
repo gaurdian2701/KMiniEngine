@@ -21,7 +21,7 @@
     <ClInclude Include="src\KMiniEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core\EntryPoint.h">
+    <ClInclude Include="src\Engine\Core\EngineMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Shader\Shader.h">
@@ -1203,7 +1203,7 @@
     <ClInclude Include="src\Engine\IO\FileSystem\FileHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Camera\Camera.h">
+    <ClInclude Include="src\Engine\Scene\Camera\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Resources\Model Loading\Mesh.h">
@@ -1268,7 +1268,7 @@
     <ClCompile Include="src\Engine\IO\FileSystem\FileHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Camera\Camera.cpp">
+    <ClCompile Include="src\Engine\Scene\Camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Resources\Model Loading\Mesh.cpp">

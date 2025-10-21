@@ -11,8 +11,5 @@ public:
 	void InitContextCallbacks();
 
 private:
-	void InitializeOpenGLContext();
-
-private:
 	GLFWwindow* m_window = nullptr;
 };

@@ -26,7 +26,7 @@ Application* CreateApplication()
 
 int main()
 {
-	return RunEngine();
+	return Core::RunEngine();
 }
 
 
