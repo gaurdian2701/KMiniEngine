@@ -4,6 +4,7 @@
 #include <concepts>
 
 class Layer;
+class Window;
 
 class Application
 {
@@ -16,6 +17,7 @@ public:
 
 	std::vector<std::unique_ptr<Layer>>& GetLayerList();
 	static Application* GetInstance();
+	Window* GetMainWindow();
 
 	template<std::derived_from<Layer> T, typename ... LayerArguments>
 	void PushLayer(LayerArguments&& ... layerArguments)
@@ -28,6 +30,7 @@ protected:
 
 private:
 	std::vector<std::unique_ptr<Layer>> m_LayerList;
+	std::unique_ptr<Window> m_mainWindow = nullptr;
 
 };
 

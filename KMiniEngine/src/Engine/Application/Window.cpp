@@ -4,9 +4,9 @@
 
 void Framebuffer_Size_Callback(GLFWwindow* window, int width, int height);
 
-
 Window::Window(int width, int height)
 {
+	
 	m_window = glfwCreateWindow(width, height, "KMiniEngine Window", nullptr, nullptr);
 	if (m_window == NULL)
 	{
@@ -17,6 +17,10 @@ Window::Window(int width, int height)
 	InitContextCallbacks();
 }
 
+Window::~Window()
+{
+	delete m_window;
+}
 
 void Window::InitContextCallbacks()
 {

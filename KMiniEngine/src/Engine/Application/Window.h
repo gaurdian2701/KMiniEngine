@@ -8,6 +8,7 @@ class Window : public Layer
 {
 public:
 	Window(int width, int height);
+	~Window();
 	void InitContextCallbacks();
 
 private:

@@ -16,15 +16,3 @@ Renderer::~Renderer()
 {
 	glfwTerminate();
 }
-
-void Renderer::OnAttach()
-{
-}
-
-void Renderer::OnDetach()
-{
-}
-
-void Renderer::Update()
-{
-}

@@ -1,6 +1,7 @@
 #include "Application.h"
 #include <iostream>
 #include "../Core/Layer.h"
+#include "Window.h"
 
 Application* Application::ApplicationInstance = nullptr;
 
@@ -14,6 +15,8 @@ Application::Application()
 	{
 		ApplicationInstance = this;
 	}
+
+	m_mainWindow = std::make_unique<Window>(1000, 800);
 }
 
 Application::~Application()
@@ -35,4 +38,9 @@ Application* Application::GetInstance()
 std::vector<std::unique_ptr<Layer>>& Application::GetLayerList()
 {
 	return m_LayerList;
+}
+
+Window* Application::GetMainWindow()
+{
+	return m_mainWindow.get();
 }
