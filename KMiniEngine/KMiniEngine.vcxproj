@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Debugging\ImGUI\ImGUILayer.h" />
     <ClInclude Include="src\Engine\Application\Application.h" />
     <ClInclude Include="src\Engine\Application\Window.h" />
     <ClInclude Include="src\Engine\Assets\Primitive Geometry\StaticObject.h" />
@@ -424,6 +425,7 @@
     <ClInclude Include="Vendor\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Debugging\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="src\Engine\Application\Application.cpp" />
     <ClCompile Include="src\Engine\Application\Window.cpp" />
     <ClCompile Include="src\Engine\IO\FileSystem\FileHandler.cpp" />

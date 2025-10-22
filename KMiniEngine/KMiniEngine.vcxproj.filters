@@ -1224,6 +1224,9 @@
     <ClInclude Include="src\Engine\Assets\Primitive Geometry\StaticObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Debugging\ImGUI\ImGUILayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application\Application.cpp">
@@ -1281,6 +1284,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Application\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Debugging\ImGUI\ImGUILayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

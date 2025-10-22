@@ -36,7 +36,3 @@ std::vector<std::unique_ptr<Layer>>& Application::GetLayerList()
 {
 	return m_LayerList;
 }
-
-
-
-
