@@ -3,14 +3,15 @@
 #include <memory>
 #include <concepts>
 
-class Layer;
 class Window;
+class Layer;
 
 class Application
 {
 public:
 	Application();
-	virtual ~Application();
+	virtual ~Application() = default;
+
 	Application(const Application& other) = delete;
 
 	virtual void Run();
@@ -30,8 +31,7 @@ protected:
 
 private:
 	std::vector<std::unique_ptr<Layer>> m_LayerList;
-	std::unique_ptr<Window> m_mainWindow = nullptr;
-
+	std::unique_ptr<Window> m_mainWindow;
 };
 
 Application* CreateApplication();

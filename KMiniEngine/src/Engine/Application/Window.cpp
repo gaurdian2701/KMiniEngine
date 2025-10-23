@@ -17,10 +17,6 @@ Window::Window(int width, int height)
 	InitContextCallbacks();
 }
 
-Window::~Window()
-{
-	delete m_window;
-}
 
 void Window::InitContextCallbacks()
 {

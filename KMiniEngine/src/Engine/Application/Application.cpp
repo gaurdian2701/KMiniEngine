@@ -1,9 +1,9 @@
 #include "Application.h"
 #include <iostream>
-#include "../Core/Layer.h"
 #include "Window.h"
 
 Application* Application::ApplicationInstance = nullptr;
+
 
 Application::Application()
 {
@@ -17,10 +17,7 @@ Application::Application()
 	}
 
 	m_mainWindow = std::make_unique<Window>(1000, 800);
-}
-
-Application::~Application()
-{
+	m_mainWindow = nullptr;
 }
 
 void Application::Run()

@@ -6,6 +6,8 @@ class Layer
 {
 public:
 	Layer() = default;
+	virtual ~Layer() = default;
+
 	virtual void OnAttach() {}
 	virtual void OnDetach() {}
 
@@ -14,13 +16,15 @@ public:
 	{
 		auto newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
 
-		for (Layer* Layer : Application::GetInstance()->GetLayerList())
+		for (int i = 0; i < Application::GetInstance()->GetLayerList().size(); i++)
 		{
-			if (Layer == this)
+			Layer* currentLayer =  Application::GetInstance()->GetLayerList()[i].get();
+
+			if (Application::GetInstance()->GetLayerList()[i].get() == this)
 			{
-				Layer.OnDetach();
-				Layer = std::move(newLayer);
-				Layer->OnAttach();
+				currentLayer->OnDetach();
+				currentLayer = std::move(newLayer);
+				currentLayer->OnAttach();
 			}
 		}
 	}

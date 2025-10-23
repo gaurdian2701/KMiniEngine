@@ -6,7 +6,9 @@
 
 class ImGUILayer : public Layer
 {
-	void OnAttach()
+public:
+
+	void OnAttach() override
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -14,7 +16,7 @@ class ImGUILayer : public Layer
 		imguiIO.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 		imguiIO.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
-		//ImGui_ImplGlfw_InitForOpenGL(window, true);
-		//ImGui_ImplOpenGL3_Init();
+		// ImGui_ImplGlfw_InitForOpenGL(window, true);
+		// ImGui_ImplOpenGL3_Init();
 	}
 };
