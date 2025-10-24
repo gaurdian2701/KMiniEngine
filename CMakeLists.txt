@@ -4,45 +4,38 @@ set(PROJECT_NAME KMiniEngine)
 
 project(${PROJECT_NAME})
 
-set(PROJECT_BINARY_NAME KMiniEngineLib)
+set(ENGINE_BINARY_NAME KMiniEngineLib)
+set(VENDOR_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
 
-add_library(${PROJECT_BINARY_NAME} STATIC
+add_library(${ENGINE_BINARY_NAME} STATIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Application.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Renderer/Renderer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Renderer/Shader/ShaderProgram.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_glfw.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
+        ${VENDOR_INCLUDE_DIR}/glad/glad.c
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
 
-        include/Application/Application.h
-        include/Application/Window.h
-        include/Core/EngineMain.h
-        include/Core/Layer.h
-        "include/Assets/Primitive Geometry/StaticObject.h"
-        include/Debugging/ImGUI/ImGUILayer.h
-        include/IO/FileSystem/FileHandler.h
-        include/Renderer/Shader/Shader.h
-        include/Renderer/Shader/ShaderHandler.h
-        include/Renderer/Shader/ShaderProgram.h
-        include/Renderer/RenderConfigs.h
-        include/Renderer/Renderer.h
-        include/Resources/ModelLoading/Mesh.h
-        include/Resources/ModelLoading/Model.h
-        include/Scene/Camera/Camera.h
-        include/KMiniEngine.h
-        src/Application/Application.cpp
-        src/Application/Window.cpp
-        src/Debugging/ImGUI/ImGUILayer.cpp
-        src/IO/FileSystem/FileHandler.cpp
-        src/Renderer/Renderer.cpp
-        src/Resources/ModelLoading/Mesh.cpp
-        src/Resources/ModelLoading/Model.cpp
-        src/Scene/Camera/Camera.cpp)
-
-target_include_directories(${PROJECT_BINARY_NAME}
+target_include_directories(${ENGINE_BINARY_NAME}
         PUBLIC
-            include
-            vendor/include)
+            ${CMAKE_CURRENT_SOURCE_DIR}/include
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
 
-target_link_libraries(${PROJECT_BINARY_NAME}
+target_link_libraries(${ENGINE_BINARY_NAME}
             PUBLIC
-                vendor/lib/assimp-vc143-mtd.lib
-                vendor/lib/glfw3.lib)
+                ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/glfw3.lib
+                ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/assimp-vc143-mtd.lib)
 
-set_target_properties(${PROJECT_BINARY_NAME}
+set_target_properties(${ENGINE_BINARY_NAME}
         PROPERTIES
             LINKER_LANGUAGE CXX)

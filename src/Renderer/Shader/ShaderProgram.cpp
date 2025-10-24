@@ -1,6 +1,5 @@
-#include "ShaderProgram.h"
-#include "glad/glad.h"
-#include "Shader.h"
+#include "Renderer/Shader/ShaderProgram.h"
+#include "Renderer/Shader/Shader.h"
 
 ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader)
 {

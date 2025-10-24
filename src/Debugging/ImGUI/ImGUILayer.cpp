@@ -1,7 +1,9 @@
 #include "Debugging/ImGUI/ImGUILayer.h"
 #include "Application/Application.h"
 #include "Application/Window.h"
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
 
 void ImGUILayer::OnAttach()
 {

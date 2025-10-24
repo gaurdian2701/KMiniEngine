@@ -17,23 +17,22 @@ public:
 
 	virtual void Run();
 
-	std::vector<std::unique_ptr<Layer>>& GetLayerList();
+	static std::vector<std::unique_ptr<Layer>>& GetLayerList();
 	static Application* GetInstance();
 	static Window* GetMainWindow();
 
 	template<std::derived_from<Layer> T, typename ... LayerArguments>
 	void PushLayer(LayerArguments&& ... layerArguments)
 	{
-		m_LayerList.push_back(std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...));
+		LayerList.push_back(std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...));
 	}
 
 protected:
 	static Application* ApplicationInstance;
 
 private:
-	std::vector<std::unique_ptr<Layer>> m_LayerList;
-	static std::unique_ptr<Window> m_mainWindow;
-	std::unique_ptr<Renderer> m_renderer;
+	static std::vector<std::unique_ptr<Layer>> LayerList;
+	static std::unique_ptr<Window> MainWindow;
 };
 
 Application* CreateApplication();
