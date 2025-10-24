@@ -1,6 +1,8 @@
-#include "Application.h"
+#include "Application/Application.h"
+#include "Core/Layer.h"
+#include "Application/Window.h"
 #include <iostream>
-#include "Window.h"
+#include "Renderer/Renderer.h"
 
 Application* Application::ApplicationInstance = nullptr;
 
@@ -16,8 +18,8 @@ Application::Application()
 		ApplicationInstance = this;
 	}
 
+	m_renderer = std::make_unique<Renderer>();
 	m_mainWindow = std::make_unique<Window>(1000, 800);
-	m_mainWindow = nullptr;
 }
 
 void Application::Run()

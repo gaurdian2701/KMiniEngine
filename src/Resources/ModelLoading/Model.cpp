@@ -1,6 +1,6 @@
-#include "Model.h"
 #include <iostream>
-#include "glad/glad.h"
+#include <glad/glad.h>
+#include "Resources/ModelLoading/Model.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"

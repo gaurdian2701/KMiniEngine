@@ -7,7 +7,9 @@ class Window : public Layer
 {
 public:
 	Window(int width, int height);
+	~Window();
 	void InitContextCallbacks();
+	GLFWwindow* GetGLFWWindow();
 
 private:
 	GLFWwindow* m_window = nullptr;

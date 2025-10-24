@@ -1,8 +1,8 @@
 #pragma once
-#include "glm/glm.hpp"
+#include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/ext/matrix_transform.hpp>
-#include "../../Renderer/Shader/ShaderProgram.h"
+#include "Renderer/Shader/ShaderProgram.h"
 
 class StaticObject
 {

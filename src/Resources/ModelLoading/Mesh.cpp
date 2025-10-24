@@ -1,6 +1,6 @@
-#include "Mesh.h"
-#include "../../Renderer/Shader/ShaderProgram.h"
+#include "Resources/ModelLoading/Mesh.h"
 #include "glad/glad.h"
+#include "Renderer/Shader/ShaderProgram.h"
 
 Mesh::Mesh(VertexData vertexData,
     std::vector<unsigned int> indices,

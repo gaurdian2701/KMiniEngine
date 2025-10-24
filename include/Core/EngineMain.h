@@ -1,7 +1,7 @@
 #pragma once
-#include "../Application/Application.h"
-#include "../Debugging/ImGUI/ImGUILayer.h"
-#include "../Renderer/Renderer.h"
+#include "Application/Application.h"
+#include "Debugging/ImGUI/ImGUILayer.h"
+#include "Renderer/Renderer.h"
 
 extern Application* CreateApplication();
 
