@@ -4,6 +4,8 @@
 class ImGUILayer : public Layer
 {
 public:
+	ImGUILayer() = default;
+	~ImGUILayer() = default;
 
 	void OnAttach() override;
 	void Update() override;

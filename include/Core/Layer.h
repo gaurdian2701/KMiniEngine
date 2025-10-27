@@ -16,11 +16,11 @@ public:
 	{
 		auto newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
 
-		for (int i = 0; i < Application::GetInstance()->GetLayerList().size(); i++)
+		for (int i = 0; i < Application::GetLayerList().size(); i++)
 		{
-			Layer* currentLayer =  Application::GetInstance()->GetLayerList()[i].get();
+			Layer* currentLayer =  Application::GetLayerList()[i].get();
 
-			if (Application::GetInstance()->GetLayerList()[i].get() == this)
+			if (Application::GetLayerList()[i].get() == this)
 			{
 				currentLayer->OnDetach();
 				currentLayer = std::move(newLayer);

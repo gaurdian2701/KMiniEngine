@@ -11,7 +11,7 @@ namespace Core
 	{
 		Renderer* renderer = new Renderer();
 		Application* application = CreateApplication();
-		application->PushLayer<ImGUILayer>();
+		application->Init();
 		application->Run();
 		delete application;
 		return 0;

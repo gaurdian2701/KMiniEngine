@@ -7,6 +7,8 @@ class Renderer;
 class Window;
 class Layer;
 
+extern void UpdateApplication();
+
 class Application
 {
 public:
@@ -15,7 +17,8 @@ public:
 
 	Application(const Application& other) = delete;
 
-	virtual void Run();
+	void Init();
+	void Run();
 
 	static std::vector<std::unique_ptr<Layer>>& GetLayerList();
 	static Application* GetInstance();
@@ -26,6 +29,14 @@ public:
 	{
 		LayerList.push_back(std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...));
 	}
+
+private:
+	void PushLayers();
+	void AttachAllLayers();
+	void UpdateLayerList();
+	void DetachAllLayers();
+	void CloseGLFWWindow();
+	void InitiateShutdown();
 
 protected:
 	static Application* ApplicationInstance;

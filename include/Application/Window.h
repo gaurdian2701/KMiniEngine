@@ -10,7 +10,8 @@ public:
 	~Window();
 	void InitContextCallbacks();
 	GLFWwindow* GetGLFWWindow();
-	void UpdateWindow();
+	void PreUpdate();
+	void PostUpdate();
 	void ProcessInput();
 
 
