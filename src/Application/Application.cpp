@@ -26,6 +26,14 @@ void Application::Run()
 {
 	while (true)
 	{
+		for (uint8_t i = 0; i < LayerList.size(); i++)
+		{
+			if (LayerList[i] != nullptr)
+			{
+				LayerList[i]->Update();
+				LayerList[i]->Render();
+			}
+		}
 	}
 }
 

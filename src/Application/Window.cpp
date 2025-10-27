@@ -1,6 +1,8 @@
 #include "Application/Window.h"
 #include <iostream>
-#include "GLFW/glfw3.h"
+
+#include "Renderer/RenderConfigs.h"
+
 
 void Framebuffer_Size_Callback(GLFWwindow* window, int width, int height);
 
@@ -41,13 +43,32 @@ void Window::InitContextCallbacks()
 	}
 }
 
+void Window::UpdateWindow()
+{
+	glfwPollEvents();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(BACKGROUND_COLOUR.x, BACKGROUND_COLOUR.y, BACKGROUND_COLOUR.z, BACKGROUND_COLOUR.w);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDisable(GL_CULL_FACE);
+	glfwSwapBuffers(m_window);
+}
+
 GLFWwindow* Window::GetGLFWWindow()
 {
 	return m_window;
 }
 
-
 void Framebuffer_Size_Callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
+}
+
+void Window::ProcessInput()
+{
+	if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(m_window, true);
+	}
 }

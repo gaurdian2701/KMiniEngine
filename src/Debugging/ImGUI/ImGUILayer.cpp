@@ -16,3 +16,25 @@ void ImGUILayer::OnAttach()
     ImGui_ImplGlfw_InitForOpenGL(Application::GetMainWindow()->GetGLFWWindow(), true);
     ImGui_ImplOpenGL3_Init();
 }
+
+void ImGUILayer::Update()
+{
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+    ImGui::ShowDemoWindow();
+}
+
+void ImGUILayer::Render()
+{
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void ImGUILayer::OnDetach()
+{
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+}
+

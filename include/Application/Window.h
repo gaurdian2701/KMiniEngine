@@ -3,13 +3,16 @@
 #include <GLFW/glfw3.h>
 #include "../Core/Layer.h"
 
-class Window : public Layer
+class Window
 {
 public:
 	Window(int width, int height);
 	~Window();
 	void InitContextCallbacks();
 	GLFWwindow* GetGLFWWindow();
+	void UpdateWindow();
+	void ProcessInput();
+
 
 private:
 	GLFWwindow* m_window = nullptr;
