@@ -5,6 +5,8 @@
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
 
+#include "Core/VoidLayer.h"
+
 void ImGUILayer::OnAttach()
 {
     IMGUI_CHECKVERSION();
@@ -37,4 +39,13 @@ void ImGUILayer::OnDetach()
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 }
+
+void ImGUILayer::ProcessInput()
+{
+    if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
+    {
+        TransitionToLayer<VoidLayer>();
+    }
+}
+
 

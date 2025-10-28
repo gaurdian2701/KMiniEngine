@@ -11,4 +11,5 @@ public:
 	void Update() override;
 	void Render() override;
 	void OnDetach() override;
+	void ProcessInput() override;
 };

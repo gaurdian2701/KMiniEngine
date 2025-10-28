@@ -10,15 +10,16 @@ public:
 
 	virtual void OnAttach() {}
 	virtual void OnDetach() {}
+	virtual void ProcessInput(){}
 
 	template<std::derived_from<Layer> T, typename ... LayerArguments>
 	void TransitionToLayer(LayerArguments&& ... layerArguments)
 	{
-		auto newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
+		std::unique_ptr<Layer> newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
 
 		for (int i = 0; i < Application::GetLayerList().size(); i++)
 		{
-			Layer* currentLayer =  Application::GetLayerList()[i].get();
+			auto& currentLayer = Application::GetLayerList()[i];
 
 			if (Application::GetLayerList()[i].get() == this)
 			{

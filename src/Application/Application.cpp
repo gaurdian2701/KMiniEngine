@@ -59,12 +59,13 @@ void Application::Run()
 
 void Application::UpdateLayerList()
 {
-	for (uint8_t i = 0; i < LayerList.size(); i++)
+	for (uint32_t i = 0; i < LayerList.size(); i++)
 	{
 		if (LayerList[i] != nullptr)
 		{
 			LayerList[i]->Update();
 			LayerList[i]->Render();
+			LayerList[i]->ProcessInput();
 		}
 	}
 }

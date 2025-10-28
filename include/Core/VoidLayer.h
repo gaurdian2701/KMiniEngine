@@ -1,0 +1,24 @@
+﻿#pragma once
+#include "Layer.h"
+#include "Application/Window.h"
+#include "Debugging/ImGUI/ImGUILayer.h"
+#include "GLFW/glfw3.h"
+
+class VoidLayer : public Layer
+{
+public:
+    VoidLayer()
+    {
+    };
+
+    ~VoidLayer() = default;
+
+protected:
+    void ProcessInput() override
+    {
+        if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
+        {
+            TransitionToLayer<ImGUILayer>();
+        }
+    }
+};
