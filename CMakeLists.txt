@@ -12,11 +12,11 @@ add_library(${ENGINE_BINARY_NAME} STATIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Renderer/Renderer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Renderer/Shader/ShaderProgram.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp

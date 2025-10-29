@@ -1,9 +1,9 @@
-#include "ShaderHandler.h"
-#include "../RenderConfigs.h"
-#include "../../IO/FileSystem/FileHandler.h"
-#include "Shader.h"
+#include "Rendering/Shading/ShaderHandler.h"
+#include "Rendering/Shading/Shader.h"
+#include "Rendering/RenderConfigs.h"
+#include "IO/FileSystem/FileHandler.h"
 
-ShaderHandler::ShaderHandler(FileHandler& fileHandler)
+Rendering::Shading::ShaderHandler::ShaderHandler(IO::FileSystem::FileHandler& fileHandler)
 {
 	TryLoadShader(fileHandler, SIMPLE_OBJECT_VERTEX_SHADER_FILEPATH, SHADER_TYPE::VERTEX);
 	TryLoadShader(fileHandler, SWAYING_OBJECT_VERTEX_SHADER_FILEPATH, SHADER_TYPE::VERTEX);
@@ -12,8 +12,8 @@ ShaderHandler::ShaderHandler(FileHandler& fileHandler)
 	TryLoadShader(fileHandler, GRASS_RENDER_FRAGMENT_SHADER_FILEPATH, SHADER_TYPE::FRAGMENT);
 }
 
-void ShaderHandler::TryLoadShader(FileHandler& fileHandler, const std::string& filePath,
-	SHADER_TYPE shaderType)
+void Rendering::Shading::ShaderHandler::TryLoadShader(IO::FileSystem::FileHandler& fileHandler, const std::string& filePath,
+                                                      SHADER_TYPE shaderType)
 {
 	std::string shaderString = "";
 
@@ -25,7 +25,7 @@ void ShaderHandler::TryLoadShader(FileHandler& fileHandler, const std::string& f
 		new Shader(shaderSource, shaderType);
 }
 
-Shader* ShaderHandler::GetShader(const std::string& filePath)
+Rendering::Shading::Shader* Rendering::Shading::ShaderHandler::GetShader(const std::string& filePath)
 {
 	if (m_shaderDictionary.find(filePath) == m_shaderDictionary.end())
 	{

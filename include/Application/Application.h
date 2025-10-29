@@ -3,9 +3,13 @@
 #include <memory>
 #include <concepts>
 
+namespace Core
+{
+	class Layer;
+}
+
 class Renderer;
 class Window;
-class Layer;
 
 extern void UpdateApplication();
 
@@ -20,11 +24,11 @@ public:
 	void Init();
 	void Run();
 
-	static std::vector<std::unique_ptr<Layer>>& GetLayerList();
+	static std::vector<std::unique_ptr<Core::Layer>>& GetLayerList();
 	static Application* GetInstance();
 	static Window* GetMainWindow();
 
-	template<std::derived_from<Layer> T, typename ... LayerArguments>
+	template<std::derived_from<Core::Layer> T, typename ... LayerArguments>
 	void PushLayer(LayerArguments&& ... layerArguments)
 	{
 		LayerList.push_back(std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...));
@@ -42,7 +46,7 @@ protected:
 	static Application* ApplicationInstance;
 
 private:
-	static std::vector<std::unique_ptr<Layer>> LayerList;
+	static std::vector<std::unique_ptr<Core::Layer>> LayerList;
 	static std::unique_ptr<Window> MainWindow;
 };
 

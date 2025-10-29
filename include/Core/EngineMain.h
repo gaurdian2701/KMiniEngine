@@ -1,7 +1,7 @@
 #pragma once
 #include "Application/Application.h"
 #include "Debugging/ImGUI/ImGUILayer.h"
-#include "Renderer/Renderer.h"
+#include "Rendering/Renderer.h"
 
 extern Application* CreateApplication();
 
@@ -9,7 +9,7 @@ namespace Core
 {
 	int RunEngine()
 	{
-		Renderer* renderer = new Renderer();
+		Rendering::Renderer* renderer = new Rendering::Renderer();
 		Application* application = CreateApplication();
 		application->Init();
 		application->Run();

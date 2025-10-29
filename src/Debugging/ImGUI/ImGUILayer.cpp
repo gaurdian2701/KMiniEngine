@@ -7,7 +7,7 @@
 
 #include "Core/VoidLayer.h"
 
-void ImGUILayer::OnAttach()
+void ImGUI::ImGUILayer::OnAttach()
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -19,7 +19,7 @@ void ImGUILayer::OnAttach()
     ImGui_ImplOpenGL3_Init();
 }
 
-void ImGUILayer::Update()
+void ImGUI::ImGUILayer::Update()
 {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -27,24 +27,24 @@ void ImGUILayer::Update()
     ImGui::ShowDemoWindow();
 }
 
-void ImGUILayer::Render()
+void ImGUI::ImGUILayer::Render()
 {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void ImGUILayer::OnDetach()
+void ImGUI::ImGUILayer::OnDetach()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 }
 
-void ImGUILayer::ProcessInput()
+void ImGUI::ImGUILayer::ProcessInput()
 {
     if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
     {
-        TransitionToLayer<VoidLayer>();
+        TransitionToLayer<Core::VoidLayer>();
     }
 }
 

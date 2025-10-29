@@ -4,21 +4,27 @@
 #include "Debugging/ImGUI/ImGUILayer.h"
 #include "GLFW/glfw3.h"
 
-class VoidLayer : public Layer
+using namespace Debugging;
+
+namespace Core
 {
-public:
-    VoidLayer()
+    class VoidLayer : public Layer
     {
-    };
-
-    ~VoidLayer() = default;
-
-protected:
-    void ProcessInput() override
-    {
-        if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
+    public:
+        VoidLayer()
         {
-            TransitionToLayer<ImGUILayer>();
+        };
+
+        ~VoidLayer() = default;
+
+    protected:
+        void ProcessInput() override
+        {
+            if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
+            {
+                TransitionToLayer<ImGUI::ImGUILayer>();
+            }
         }
-    }
-};
+    };
+}
+

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-bool FileHandler::OpenShaderFile(std::string& shaderString, const std::string& shaderFilePath)
+bool IO::FileSystem::FileHandler::OpenShaderFile(std::string& shaderString, const std::string& shaderFilePath)
 {
 	std::ifstream ShaderFileStream;
 
