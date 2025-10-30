@@ -5,14 +5,12 @@ namespace IO::Input
 {
     struct InputSystemPayload
     {
-        InputSystemPayload(int someKeyPress) : KeyPressed(someKeyPress)
-        {
+        InputSystemPayload(int someKeyPress) : KeyPressed(someKeyPress){}
 
-        }
         int KeyPressed = 0;
     };
 
-    class InputSystem : public Layer
+    class InputSystem : public Core::Layer
     {
     public:
         InputSystem();
@@ -20,4 +18,6 @@ namespace IO::Input
 
         void Update() override;
     };
+
+    static InputSystem* InputSystemInstance = nullptr;
 }

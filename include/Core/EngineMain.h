@@ -8,6 +8,8 @@ extern Application* CreateApplication();
 
 namespace Core
 {
+	inline auto& MainEventSystem = GetEventSystem();
+
 	inline int RunEngine()
 	{
 		Rendering::Renderer* renderer = new Rendering::Renderer();

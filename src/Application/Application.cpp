@@ -3,6 +3,7 @@
 #include "Application/Window.h"
 #include <iostream>
 #include "Debugging/ImGUI/ImGUILayer.h"
+#include "IO/Input/InputSystem.h"
 
 
 Application* Application::ApplicationInstance = nullptr;
@@ -31,6 +32,7 @@ void Application::Init()
 void Application::PushLayers()
 {
 	PushLayer<Debugging::ImGUI::ImGUILayer>();
+	PushLayer<IO::Input::InputSystem>();
 }
 
 void Application::AttachAllLayers()

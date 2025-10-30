@@ -24,7 +24,8 @@ add_library(${ENGINE_BINARY_NAME} STATIC
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
         ${VENDOR_INCLUDE_DIR}/glad/glad.c
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp
+        src/IO/Input/InputSystem.cpp)
 
 target_include_directories(${ENGINE_BINARY_NAME}
         PUBLIC
