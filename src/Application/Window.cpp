@@ -1,7 +1,6 @@
 #include "Application/Window.h"
 #include <iostream>
-
-#include "Renderintg/RenderConfigs.h"
+#include "Rendering/RenderConfigs.h"
 
 
 void Framebuffer_Size_Callback(GLFWwindow* window, int width, int height);
@@ -49,7 +48,7 @@ void Window::PreUpdate()
 	ProcessInput();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(BACKGROUND_COLOUR.x, BACKGROUND_COLOUR.y, BACKGROUND_COLOUR.z, BACKGROUND_COLOUR.w);
+	glClearColor(Rendering::BACKGROUND_COLOUR.x, Rendering::BACKGROUND_COLOUR.y, Rendering::BACKGROUND_COLOUR.z, Rendering::BACKGROUND_COLOUR.w);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

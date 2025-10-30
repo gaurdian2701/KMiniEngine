@@ -1,7 +1,8 @@
 #pragma once
 #include "StackSingletons.h"
 #include "Application/Application.h"
-#include "Renderer/Renderer.h"
+#include "Debugging/ImGUI/ImGUILayer.h"
+#include "Rendering/Renderer.h"
 
 extern Application* CreateApplication();
 
@@ -9,10 +10,7 @@ namespace Core
 {
 	inline int RunEngine()
 	{
-		Renderer* renderer = new Renderer();
-
-		auto& MainEventSystem = GetEventSystem();
-
+		Rendering::Renderer* renderer = new Rendering::Renderer();
 		Application* application = CreateApplication();
 		application->Init();
 		application->Run();

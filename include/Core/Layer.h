@@ -2,34 +2,37 @@
 #include <concepts>
 #include "Application/Application.h"
 
-class Layer
+namespace Core
 {
-public:
-	Layer() = default;
-	virtual ~Layer() = default;
-
-	virtual void OnAttach() {}
-	virtual void OnDetach() {}
-	virtual void ProcessInput(){}
-
-	template<std::derived_from<Layer> T, typename ... LayerArguments>
-	void TransitionToLayer(LayerArguments&& ... layerArguments)
+	class Layer
 	{
-		std::unique_ptr<Layer> newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
+	public:
+		Layer() = default;
+		virtual ~Layer() = default;
 
-		for (int i = 0; i < Application::GetLayerList().size(); i++)
+		virtual void OnAttach() {}
+		virtual void OnDetach() {}
+		virtual void ProcessInput(){}
+
+		template<std::derived_from<Layer> T, typename ... LayerArguments>
+		void TransitionToLayer(LayerArguments&& ... layerArguments)
 		{
-			auto& currentLayer = Application::GetLayerList()[i];
+			std::unique_ptr<Layer> newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
 
-			if (Application::GetLayerList()[i].get() == this)
+			for (int i = 0; i < Application::GetLayerList().size(); i++)
 			{
-				currentLayer->OnDetach();
-				currentLayer = std::move(newLayer);
-				currentLayer->OnAttach();
+				auto& currentLayer = Application::GetLayerList()[i];
+
+				if (Application::GetLayerList()[i].get() == this)
+				{
+					currentLayer->OnDetach();
+					currentLayer = std::move(newLayer);
+					currentLayer->OnAttach();
+				}
 			}
 		}
-	}
 
-	virtual void Update() {}
-	virtual void Render() {}
-};
+		virtual void Update() {}
+		virtual void Render() {}
+	};
+}
