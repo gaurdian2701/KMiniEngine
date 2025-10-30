@@ -1,7 +1,7 @@
 #include "Application/Window.h"
 #include <iostream>
 
-#include "Renderer/RenderConfigs.h"
+#include "Renderintg/RenderConfigs.h"
 
 
 void Framebuffer_Size_Callback(GLFWwindow* window, int width, int height);

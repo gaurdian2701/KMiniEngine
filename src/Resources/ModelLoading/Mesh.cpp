@@ -1,17 +1,17 @@
 #include "Resources/ModelLoading/Mesh.h"
 #include "glad/glad.h"
-#include "Renderer/Shader/ShaderProgram.h"
+#include "Rendering/Shading/ShaderProgram.h"
 
-Mesh::Mesh(VertexData vertexData,
-    std::vector<unsigned int> indices,
-    std::vector<Texture> textures)
+Resources::ModelLoading::Mesh::Mesh(VertexData vertexData,
+                                    std::vector<unsigned int> indices,
+                                    std::vector<Texture> textures)
 {
 	m_vertexData = vertexData;
 	m_indices = indices;
 	m_textures = textures;
 }
 
-void Mesh::SetupMesh()
+void Resources::ModelLoading::Mesh::SetupMesh()
 {
     glGenVertexArrays(1, &m_VAO);
     glGenBuffers(1, &m_VBO);
@@ -76,7 +76,7 @@ void Mesh::SetupMesh()
     glBindVertexArray(0);
 }
 
-void Mesh::Draw(ShaderProgram* shaderProgram, DrawMode drawMode)
+void Resources::ModelLoading::Mesh::Draw(Rendering::Shading::ShaderProgram* shaderProgram, DrawMode drawMode)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
@@ -116,12 +116,12 @@ void Mesh::Draw(ShaderProgram* shaderProgram, DrawMode drawMode)
     glActiveTexture(GL_TEXTURE0);
 }
 
-void Mesh::SetupOffsets(std::vector<glm::vec3>* offsets)
+void Resources::ModelLoading::Mesh::SetupOffsets(std::vector<glm::vec3>* offsets)
 {
     m_offsets = *offsets;
 }
 
-void Mesh::SetupInstanceCount(unsigned int instanceCount)
+void Resources::ModelLoading::Mesh::SetupInstanceCount(unsigned int instanceCount)
 {
     m_instanceCount = instanceCount;
 }

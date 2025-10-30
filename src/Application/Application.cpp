@@ -1,15 +1,13 @@
 #include "Application/Application.h"
 #include "Core/Layer.h"
 #include "Application/Window.h"
-#include "Renderer/Renderer.h"
 #include <iostream>
-
 #include "Debugging/ImGUI/ImGUILayer.h"
 
 
 Application* Application::ApplicationInstance = nullptr;
 std::unique_ptr<Window> Application::MainWindow = std::make_unique<Window>(1000, 800);
-std::vector<std::unique_ptr<Layer>> Application::LayerList;
+std::vector<std::unique_ptr<Core::Layer>> Application::LayerList;
 
 
 Application::Application()
@@ -32,7 +30,7 @@ void Application::Init()
 
 void Application::PushLayers()
 {
-	PushLayer<ImGUILayer>();
+	PushLayer<Debugging::ImGUI::ImGUILayer>();
 }
 
 void Application::AttachAllLayers()
@@ -75,7 +73,7 @@ Application* Application::GetInstance()
 	return ApplicationInstance;
 }
 
-std::vector<std::unique_ptr<Layer>>& Application::GetLayerList()
+std::vector<std::unique_ptr<Core::Layer>>& Application::GetLayerList()
 {
 	return LayerList;
 }

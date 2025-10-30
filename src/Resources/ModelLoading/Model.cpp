@@ -1,17 +1,18 @@
 #include <iostream>
 #include <glad/glad.h>
 #include "Resources/ModelLoading/Model.h"
+#include "Rendering/Shading/ShaderProgram.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 
-Model::Model(const char* modelPath)
+Resources::ModelLoading::Model::Model(const char* modelPath)
 {
 	LoadModel(modelPath);
 }
 
-void Model::Draw(ShaderProgram* shaderProgram, DrawMode drawMode)
+void Resources::ModelLoading::Model::Draw(Rendering::Shading::ShaderProgram* shaderProgram, DrawMode drawMode)
 {
 	for(unsigned int i = 0; i < m_meshes.size(); i++)
 	{
@@ -19,7 +20,7 @@ void Model::Draw(ShaderProgram* shaderProgram, DrawMode drawMode)
 	}
 }
 
-void Model::SetupMeshes()
+void Resources::ModelLoading::Model::SetupMeshes()
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 	{
@@ -27,7 +28,7 @@ void Model::SetupMeshes()
 	}
 }
 
-void Model::SetupOffsets(std::vector<glm::vec3>* offsets)
+void Resources::ModelLoading::Model::SetupOffsets(std::vector<glm::vec3>* offsets)
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 	{
@@ -35,7 +36,7 @@ void Model::SetupOffsets(std::vector<glm::vec3>* offsets)
 	}
 }
 
-void Model::SetupInstanceCount(unsigned int instanceCount)
+void Resources::ModelLoading::Model::SetupInstanceCount(unsigned int instanceCount)
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 	{
@@ -43,7 +44,7 @@ void Model::SetupInstanceCount(unsigned int instanceCount)
 	}
 }
 
-void Model::LoadModel(std::string modelPath)
+void Resources::ModelLoading::Model::LoadModel(std::string modelPath)
 {
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(modelPath, aiProcess_Triangulate | aiProcess_GenNormals);
@@ -60,7 +61,7 @@ void Model::LoadModel(std::string modelPath)
 
 
 
-void Model::ProcessNode(aiNode* node, const aiScene* scene)
+void Resources::ModelLoading::Model::ProcessNode(aiNode* node, const aiScene* scene)
 {
 	for(unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
@@ -74,7 +75,7 @@ void Model::ProcessNode(aiNode* node, const aiScene* scene)
 	}
 }
 
-Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
+Resources::ModelLoading::Mesh Resources::ModelLoading::Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 {
 	VertexData vertexData;
 	std::vector<unsigned int> indices = {};
@@ -135,8 +136,8 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 	return Mesh(vertexData, indices, textures);
 }
 
-std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,
-	aiTextureType textureType, std::string textureTypeName)
+std::vector<Resources::ModelLoading::Texture> Resources::ModelLoading::Model::LoadMaterialTextures(aiMaterial* material,
+                                                                                                   aiTextureType textureType, std::string textureTypeName)
 {
 	std::vector<Texture> textures = {};
 	for(unsigned int i = 0; i < material->GetTextureCount(textureType); i++)
@@ -166,7 +167,7 @@ std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* material,
 	return textures;
 }
 
-unsigned int Model::TextureFromFile(const char* path, const std::string& directory, bool gamma)
+unsigned int Resources::ModelLoading::Model::TextureFromFile(const char* path, const std::string& directory, bool gamma)
 {
 	std::string filename = std::string(path);
 	filename = directory + '/' + filename;

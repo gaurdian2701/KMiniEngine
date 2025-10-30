@@ -1,18 +1,22 @@
 #pragma once
+#include "StackSingletons.h"
 #include "Application/Application.h"
-#include "Debugging/ImGUI/ImGUILayer.h"
 #include "Renderer/Renderer.h"
 
 extern Application* CreateApplication();
 
 namespace Core
 {
-	int RunEngine()
+	inline int RunEngine()
 	{
 		Renderer* renderer = new Renderer();
+
+		auto& MainEventSystem = GetEventSystem();
+
 		Application* application = CreateApplication();
 		application->Init();
 		application->Run();
+
 		delete application;
 		return 0;
 	}
