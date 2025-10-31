@@ -2,11 +2,28 @@
 #include <any>
 #include <typeindex>
 #include <unordered_map>
-#include "IEventListener.h"
+#include <functional>
 
 namespace Core::Events
 {
     inline struct EmptyPayload {} EmptyEventPayload;
+
+    struct ListenerFunctionData
+    {
+        ListenerFunctionData(const std::function<void(const std::any&)>& someListenerFunction, const uint32_t someFunctionID)
+        {
+            ListenerFunction = someListenerFunction;
+            functionID = someFunctionID;
+        }
+
+        bool operator==(const ListenerFunctionData& other)
+        {
+           return functionID = other.functionID;
+        }
+
+        std::function<void(const std::any&)> ListenerFunction;
+        uint32_t functionID = 0;
+    };
 
     enum class EventType : uint16_t
     {
@@ -20,53 +37,60 @@ namespace Core::Events
         ~EventSystem() = default;
 
         template<typename T>
-        void RegisterEvent(EventType someEventType)
+        void RegisterEvent(const EventType someEventType)
         {
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
 
             if (!eventListenerMapForType.contains(std::type_index(typeid(T))))
             {
-                eventListenerMapForType.insert({std::type_index(typeid(T)), std::vector<IEventListener*>{}});
+                eventListenerMapForType.insert({std::type_index(typeid(T)), std::vector<ListenerFunctionData>{}});
             }
         }
 
         template<typename T>
-        void UnRegisterEvent(EventType someEventType)
+        void UnRegisterEvent(const EventType someEventType)
         {
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             eventListenerMapForType.erase(std::type_index(typeid(T)));
         }
 
         template<typename T>
-        void PublishEvent(EventType someEventType, const std::any& somePayload)
+        void PublishEvent(const EventType someEventType, const std::any& somePayload)
         {
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
 
             for (auto& listener : listenerList)
             {
-                listener->OnEventPublished(somePayload);
+                listener.ListenerFunction(somePayload);
             }
         }
 
         template<typename T>
-        void SubscribeToEvent(EventType someEventType, IEventListener* someListener)
+        uint32_t SubscribeToEvent(const EventType someEventType, std::function<void(const std::any&)> someListenerFunction)
         {
+            static uint32_t functionListenerID = 0;
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
-            listenerList.push_back(someListener);
+            listenerList.push_back(ListenerFunctionData(someListenerFunction, functionListenerID));
+            functionListenerID++;
+            return functionListenerID;
         }
 
         template<typename T>
-        void UnsubscribeFromEvent(EventType someEventType, IEventListener* someListener)
+        void UnsubscribeFromEvent(const EventType someEventType, const uint32_t someFunctionID)
         {
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
-            const auto removeIterator = std::remove(listenerList.begin(), listenerList.end(), someListener);
+            auto& removeIterator = std::remove(listenerList.begin(), listenerList.end(),
+                [&](const ListenerFunctionData& listenerFunctionData)
+                {
+                    return listenerFunctionData.functionID == someFunctionID;
+                });
             listenerList.erase(removeIterator, listenerList.end());
         }
 
     private:
-        std::unordered_map<EventType, std::unordered_map<std::type_index, std::vector<IEventListener*>>> m_EventListenerTypeMap;
+        std::unordered_map<EventType, std::unordered_map<std::type_index, std::vector<ListenerFunctionData>>> m_EventListenerTypeMap;
     };
 }

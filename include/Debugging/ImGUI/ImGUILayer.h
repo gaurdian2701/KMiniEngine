@@ -1,4 +1,5 @@
 #pragma once
+#include <any>
 #include "Core/Layer.h"
 
 namespace Debugging::ImGUI
@@ -14,5 +15,7 @@ namespace Debugging::ImGUI
         void Render() override;
         void OnDetach() override;
         void ProcessInput() override;
+
+        void OnKeyPressed(const std::any& someEventPayload);
     };
 }
