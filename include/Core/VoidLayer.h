@@ -20,7 +20,7 @@ namespace Core
     protected:
         void ProcessInput() override
         {
-            if (glfwGetKey(Application::GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
+            if (glfwGetKey(Application::GetInstance()->GetMainWindow()->GetGLFWWindow(), GLFW_KEY_I) == (GLFW_RELEASE | GLFW_PRESS))
             {
                 TransitionToLayer<ImGUI::ImGUILayer>();
             }

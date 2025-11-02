@@ -8,14 +8,13 @@ namespace Debugging::ImGUI
     {
     public:
         ImGUILayer() = default;
-        ~ImGUILayer() = default;
+        ~ImGUILayer() override = default;
 
         void OnAttach() override;
         void Update() override;
         void Render() override;
         void OnDetach() override;
-        void ProcessInput() override;
 
-        void OnKeyPressed(const std::any& someEventPayload);
+        //Toggle Layers on and off through GLFW Keypress callbacks
     };
 }

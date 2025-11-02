@@ -17,16 +17,16 @@ class Application
 {
 public:
 	Application();
-	virtual ~Application() = default;
-
+	virtual ~Application();
 	Application(const Application& other) = delete;
+
+	static Application* GetInstance();
 
 	void Init();
 	void Run();
 
-	static std::vector<std::unique_ptr<Core::Layer>>& GetLayerList();
-	static Application* GetInstance();
-	static Window* GetMainWindow();
+	std::vector<std::unique_ptr<Core::Layer>>& GetLayerList();
+	Window* GetMainWindow();
 
 	template<std::derived_from<Core::Layer> T, typename ... LayerArguments>
 	void PushLayer(LayerArguments&& ... layerArguments)
@@ -46,8 +46,8 @@ protected:
 	static Application* ApplicationInstance;
 
 private:
-	static std::vector<std::unique_ptr<Core::Layer>> LayerList;
-	static std::unique_ptr<Window> MainWindow;
+	std::vector<std::unique_ptr<Core::Layer>> LayerList;
+	Window* MainWindow = nullptr;
 };
 
 Application* CreateApplication();

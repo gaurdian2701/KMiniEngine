@@ -6,8 +6,6 @@
 
 namespace Core::Events
 {
-    inline struct EmptyPayload {} EmptyEventPayload;
-
     struct ListenerFunctionData
     {
         ListenerFunctionData(const std::function<void(const std::any&)>& someListenerFunction, const uint32_t someFunctionID)
@@ -33,8 +31,10 @@ namespace Core::Events
     class EventSystem
     {
     public:
-        EventSystem() = default;
+        EventSystem();
         ~EventSystem() = default;
+
+        static EventSystem* GetInstance();
 
         template<typename T>
         void RegisterEvent(const EventType someEventType)
@@ -73,8 +73,7 @@ namespace Core::Events
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
             listenerList.push_back(ListenerFunctionData(someListenerFunction, functionListenerID));
-            functionListenerID++;
-            return functionListenerID;
+            return functionListenerID++;
         }
 
         template<typename T>
@@ -82,7 +81,7 @@ namespace Core::Events
         {
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
-            auto& removeIterator = std::remove(listenerList.begin(), listenerList.end(),
+            auto removeIterator = std::remove_if(listenerList.begin(), listenerList.end(),
                 [&](const ListenerFunctionData& listenerFunctionData)
                 {
                     return listenerFunctionData.functionID == someFunctionID;

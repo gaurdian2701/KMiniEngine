@@ -19,11 +19,11 @@ namespace Core
 		{
 			std::unique_ptr<Layer> newLayer = std::make_unique<T>(std::forward<LayerArguments>(layerArguments) ...);
 
-			for (int i = 0; i < Application::GetLayerList().size(); i++)
+			for (int i = 0; i < Application::GetInstance()->GetLayerList().size(); i++)
 			{
-				auto& currentLayer = Application::GetLayerList()[i];
+				auto& currentLayer = Application::GetInstance()->GetLayerList()[i];
 
-				if (Application::GetLayerList()[i].get() == this)
+				if (Application::GetInstance()->GetLayerList()[i].get() == this)
 				{
 					currentLayer->OnDetach();
 					currentLayer = std::move(newLayer);

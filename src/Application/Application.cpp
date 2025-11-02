@@ -5,11 +5,7 @@
 #include "Debugging/ImGUI/ImGUILayer.h"
 #include "IO/Input/InputSystem.h"
 
-
 Application* Application::ApplicationInstance = nullptr;
-std::unique_ptr<Window> Application::MainWindow = std::make_unique<Window>(1000, 800);
-std::vector<std::unique_ptr<Core::Layer>> Application::LayerList;
-
 
 Application::Application()
 {
@@ -21,6 +17,18 @@ Application::Application()
 	{
 		ApplicationInstance = this;
 	}
+
+	MainWindow = new Window(1000, 800);
+}
+
+Application::~Application()
+{
+	delete MainWindow;
+}
+
+Application* Application::GetInstance()
+{
+	return ApplicationInstance;
 }
 
 void Application::Init()
@@ -31,8 +39,8 @@ void Application::Init()
 
 void Application::PushLayers()
 {
-	PushLayer<Debugging::ImGUI::ImGUILayer>();
 	PushLayer<IO::Input::InputSystem>();
+	PushLayer<Debugging::ImGUI::ImGUILayer>();
 }
 
 void Application::AttachAllLayers()
@@ -70,11 +78,6 @@ void Application::UpdateLayerList()
 	}
 }
 
-Application* Application::GetInstance()
-{
-	return ApplicationInstance;
-}
-
 std::vector<std::unique_ptr<Core::Layer>>& Application::GetLayerList()
 {
 	return LayerList;
@@ -82,7 +85,7 @@ std::vector<std::unique_ptr<Core::Layer>>& Application::GetLayerList()
 
 Window* Application::GetMainWindow()
 {
-	return MainWindow.get();
+	return MainWindow;
 }
 
 void Application::DetachAllLayers()
