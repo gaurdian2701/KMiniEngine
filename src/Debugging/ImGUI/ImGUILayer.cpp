@@ -7,7 +7,7 @@
 #include "Core/VoidLayer.h"
 #include "Core/Events/EventSystem.h"
 
-void Debugging::ImGUI::ImGUILayer::OnAttach()
+void ImGUI::ImGUILayer::OnAttach()
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -19,7 +19,7 @@ void Debugging::ImGUI::ImGUILayer::OnAttach()
     ImGui_ImplOpenGL3_Init();
 }
 
-void Debugging::ImGUI::ImGUILayer::Update()
+void ImGUI::ImGUILayer::Update()
 {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
@@ -27,13 +27,13 @@ void Debugging::ImGUI::ImGUILayer::Update()
     ImGui::ShowDemoWindow();
 }
 
-void Debugging::ImGUI::ImGUILayer::Render()
+void ImGUI::ImGUILayer::Render()
 {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void Debugging::ImGUI::ImGUILayer::OnDetach()
+void ImGUI::ImGUILayer::OnDetach()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
