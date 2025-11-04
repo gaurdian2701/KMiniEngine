@@ -11,7 +11,9 @@ namespace Core
 class Renderer;
 class Window;
 
+extern void BeginApplication();
 extern void UpdateApplication();
+extern void EndApplication();
 
 class Application
 {
@@ -50,7 +52,7 @@ private:
 	Window* MainWindow = nullptr;
 };
 
-Application* CreateApplication();
+Application& CreateApplication();
 
 
 

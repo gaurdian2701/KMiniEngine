@@ -18,6 +18,11 @@ add_library(${ENGINE_BINARY_NAME} STATIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/EntityManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ComponentManager.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Scene.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/Entity.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp
@@ -25,15 +30,16 @@ add_library(${ENGINE_BINARY_NAME} STATIC
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
         ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
         ${VENDOR_INCLUDE_DIR}/glad/glad.c
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp
-        src/Core/Events/EventSystem.cpp)
+        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
 
-target_include_directories(${ENGINE_BINARY_NAME}
-        PUBLIC
-            ${CMAKE_CURRENT_SOURCE_DIR}/include
-            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
+target_include_directories(
+        ${ENGINE_BINARY_NAME}
+            PUBLIC
+                ${CMAKE_CURRENT_SOURCE_DIR}/include
+                ${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
 
-target_link_libraries(${ENGINE_BINARY_NAME}
+target_link_libraries(
+        ${ENGINE_BINARY_NAME}
             PUBLIC
                 ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/glfw3.lib
                 ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/assimp-vc143-mtd.lib)

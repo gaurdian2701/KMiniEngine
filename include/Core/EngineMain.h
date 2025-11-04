@@ -1,10 +1,9 @@
 #pragma once
 #include "Application/Application.h"
-#include "Debugging/ImGUI/ImGUILayer.h"
 #include "Events/EventSystem.h"
 #include "Rendering/Renderer.h"
 
-extern Application* CreateApplication();
+extern Application& CreateApplication();
 
 namespace Core
 {
@@ -12,11 +11,11 @@ namespace Core
 	{
 		Rendering::Renderer* renderer = new Rendering::Renderer();
 		Events::EventSystem* eventSystem = new Events::EventSystem();
-		Application* application = CreateApplication();
-		application->Init();
-		application->Run();
+		Application& application = CreateApplication();
 
-		delete application;
+		application.Init();
+		application.Run();
+
 		return 0;
 	}
 }

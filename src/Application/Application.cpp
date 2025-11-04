@@ -53,6 +53,7 @@ void Application::AttachAllLayers()
 
 void Application::Run()
 {
+	BeginApplication();
 	while (!glfwWindowShouldClose(MainWindow->GetGLFWWindow()))
 	{
 		UpdateApplication();
@@ -62,6 +63,7 @@ void Application::Run()
 		MainWindow->PostUpdate();
 	}
 
+	EndApplication();
 	InitiateShutdown();
 }
 
