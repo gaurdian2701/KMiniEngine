@@ -1,13 +1,15 @@
 ﻿#pragma once
 #include <vector>
-#include "ECS/EntityManager.h"
-#include "ECS/ComponentManager.h"
+#include "Core/ECS/EntityManager.h"
+#include "Core/ECS/ComponentManager.h"
 
 namespace Core
 {
     namespace ECS
     {
         class Entity;
+        class EntityManager;
+        class ComponentManager;
     }
 
     class Scene
@@ -18,17 +20,8 @@ namespace Core
 
         ECS::Entity* CreateEntity();
 
-        template<typename T, typename... ComponentArguments>
-        void AddComponentToEntity(const std::uint32_t someEntityID, ComponentArguments&&... componentArguments)
-        {
-            m_componentManager.AddComponentToEntity<T>(someEntityID, componentArguments...);
-        }
-
-        template<typename T>
-        void RemoveComponentFromEntity(const std::uint32_t someEntityID)
-        {
-            m_componentManager.RemoveComponentFromEntity<T>(someEntityID);
-        }
+        ECS::EntityManager* GetEntityManager();
+        ECS::ComponentManager* GetComponentManager();
 
     private:
         ECS::EntityManager m_entityManager;

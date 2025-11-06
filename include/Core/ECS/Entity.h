@@ -18,7 +18,7 @@ namespace Core::ECS
         template<typename T>
         void AddComponent()
         {
-            m_sceneReference->AddComponentToEntity<T>(m_entityID);
+            m_sceneReference.AddComponentToEntity<T>(m_entityID);
         }
 
         template<typename T>
