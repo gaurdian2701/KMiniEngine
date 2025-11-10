@@ -7,30 +7,29 @@ project(${PROJECT_NAME})
 set(ENGINE_BINARY_NAME KMiniEngineLib)
 set(VENDOR_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/include)
 
-add_library(${ENGINE_BINARY_NAME} STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Application.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/EntityManager.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ComponentManager.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Scene.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/Entity.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_glfw.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
-        ${VENDOR_INCLUDE_DIR}/glad/glad.c
-        ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
+add_library(
+        ${ENGINE_BINARY_NAME}
+            STATIC
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Application.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Scene.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_glfw.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
+                ${VENDOR_INCLUDE_DIR}/glad/glad.c
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
 
 target_include_directories(
         ${ENGINE_BINARY_NAME}

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <any>
+#include <cstdint>
 #include <typeindex>
 #include <unordered_map>
 #include <functional>
@@ -8,7 +9,7 @@ namespace Core::Events
 {
     struct ListenerFunctionData
     {
-        ListenerFunctionData(const std::function<void(const std::any&)>& someListenerFunction, const uint32_t someFunctionID)
+        ListenerFunctionData(const std::function<void(const std::any&)>& someListenerFunction, const std::uint32_t someFunctionID)
         {
             ListenerFunction = someListenerFunction;
             functionID = someFunctionID;
