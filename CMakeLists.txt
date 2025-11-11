@@ -22,6 +22,10 @@ add_library(
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Scene.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/System.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ECSManager.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/Systems/MovementSystem.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ComponentPool.cpp
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui.cpp
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_demo.cpp
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_draw.cpp
