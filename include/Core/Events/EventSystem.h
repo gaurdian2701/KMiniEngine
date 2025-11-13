@@ -73,7 +73,7 @@ namespace Core::Events
             static uint32_t functionListenerID = 0;
             auto& eventListenerMapForType = m_EventListenerTypeMap[someEventType];
             auto& listenerList = eventListenerMapForType[std::type_index(typeid(T))];
-            listenerList.push_back(ListenerFunctionData(someListenerFunction, functionListenerID));
+            listenerList.emplace_back(someListenerFunction, functionListenerID);
             return functionListenerID++;
         }
 
