@@ -6,7 +6,7 @@ void Core::ECS::Systems::MovementSystem::Update()
 {
     for (uint32_t i = 0; i < m_denseComponentArray.size(); i++)
     {
-        //Update Transforms
+        m_denseComponentArray[i].pos.x = 1;
     }
 }
 
