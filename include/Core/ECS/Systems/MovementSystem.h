@@ -1,13 +1,15 @@
 ﻿#pragma once
-#include "Core/ECS/System.h"
+#include "SystemBase.h"
 #include "Core/ECS/Components/Transform.h"
 
 namespace Core::ECS::Systems
 {
-    class MovementSystem : public System<Components::Transform>
+    class MovementSystem : public SystemBase<Components::Transform>
     {
     public:
         explicit MovementSystem(const std::uint32_t maxEntities);
-        void Update() override;
+        void BeginSystem() override;
+        void UpdateSystem() override;
+        void EndSystem() override;
     };
 }

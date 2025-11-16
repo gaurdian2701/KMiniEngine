@@ -5,7 +5,7 @@
 float m_lastX = Rendering::SCREEN_WIDTH / 2.0f;
 float m_lastY = Rendering::SCREEN_HEIGHT / 2.0f;
 
-Core::Camera::Camera(glm::vec3 cameraPosition, glm::vec3 cameraFront, glm::vec3 cameraUp, GLFWwindow* window, float cameraSpeed)
+Scene::Camera::Camera(glm::vec3 cameraPosition, glm::vec3 cameraFront, glm::vec3 cameraUp, GLFWwindow* window, float cameraSpeed)
 {
 	m_window = window;
 	m_cameraPosition = cameraPosition;
@@ -15,24 +15,24 @@ Core::Camera::Camera(glm::vec3 cameraPosition, glm::vec3 cameraFront, glm::vec3 
 	RotateCamera();
 }
 
-glm::mat4 Core::Camera::GetViewMatrix()
+glm::mat4 Scene::Camera::GetViewMatrix()
 {
 	m_cameraViewMatrix = glm::lookAt(m_cameraPosition, m_cameraPosition + m_cameraFront, glm::vec3(0.0f, 1.0f, 0.0f));
 	return m_cameraViewMatrix;
 }
 
-glm::vec3 Core::Camera::GetCameraPosition() const
+glm::vec3 Scene::Camera::GetCameraPosition() const
 {
 	return m_cameraPosition;
 }
 
-void Core::Camera::ProcessInput(float deltaTime)
+void Scene::Camera::ProcessInput(float deltaTime)
 {
 	MoveCamera(deltaTime);
 	RotateCamera();
 }
 
-void Core::Camera::MouseCallback(double xpos, double ypos)
+void Scene::Camera::MouseCallback(double xpos, double ypos)
 {
 	if (m_firstMouse)
 	{
@@ -59,7 +59,7 @@ void Core::Camera::MouseCallback(double xpos, double ypos)
 		m_pitch = -89.0f;
 }
 
-void Core::Camera::MoveCamera(float deltaTime)
+void Scene::Camera::MoveCamera(float deltaTime)
 {
 	if (glfwGetKey(m_window, GLFW_KEY_W) == GLFW_PRESS)
 	{
@@ -84,7 +84,7 @@ void Core::Camera::MoveCamera(float deltaTime)
 	}
 }
 
-void Core::Camera::RotateCamera()
+void Scene::Camera::RotateCamera()
 {
 	m_cameraFront.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));	
 	m_cameraFront.y = sin(glm::radians(m_pitch));

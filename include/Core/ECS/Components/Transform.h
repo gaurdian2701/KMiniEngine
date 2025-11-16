@@ -1,9 +1,8 @@
 ﻿#pragma once
-#include "Core/ECS/Component.h"
 
 namespace Core::ECS::Components
 {
-    struct Transform : Component
+    struct Transform
     {
         struct Position
         {
@@ -21,7 +20,5 @@ namespace Core::ECS::Components
 
         Position pos;
         Rotation rot;
-
-
     };
 }

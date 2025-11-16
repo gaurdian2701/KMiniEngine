@@ -1,12 +1,16 @@
 ﻿#include "Core/ECS/ECSManager.h"
-#include "Core/ECS/System.h"
 
-Core::ECS::ECSManager::ECSManager()
+#include <cassert>
+
+#include "../../../include/Core/ECS/Systems/SystemBase.h"
+#include "Core/ECS/Systems/MovementSystem.h"
+
+static Core::ECS::ECSManager* ECSManagerInstance = nullptr;
+
+Core::ECS::ECSManager::ECSManager(const std::uint32_t maxEntities) : m_maxEntities(maxEntities)
 {
-    CreateSystems();
-}
-
-void Core::ECS::ECSManager::CreateSystems()
-{
-
+	if (ECSManagerInstance == nullptr)
+	{
+		ECSManagerInstance = this;
+	}
 }

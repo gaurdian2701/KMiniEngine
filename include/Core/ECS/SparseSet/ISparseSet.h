@@ -2,6 +2,8 @@
 
 namespace Core::ECS
 {
-    struct Component
-    {};
+	class ISparseSet
+	{
+	};
 }
+
