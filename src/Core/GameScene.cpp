@@ -1,5 +1,4 @@
 ﻿#include "Core/GameScene.h"
-
 #include "Scene/GameObject.h"
 
 Core::GameScene::GameScene(const std::uint32_t maxEntitiesInScene) : m_ECSManager(maxEntitiesInScene)
@@ -18,4 +17,15 @@ void Core::GameScene::Update(const float deltaTime)
 Core::ECS::ECSManager& Core::GameScene::GetECSManager()
 {
 	return m_ECSManager;
+}
+
+Scene::GameObject* Core::GameScene::CreateGameObject()
+{
+	m_gameObjectsInScene.push_back(new Scene::GameObject(m_ECSManager.GenerateEntityID(), this));
+	return m_gameObjectsInScene.back();
+}
+
+void Core::GameScene::DeleteGameObject(Scene::GameObject* gameObject)
+{
+	m_ECSManager.FreeEntityID(gameObject->GetEntityID());
 }

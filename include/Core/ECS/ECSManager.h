@@ -2,17 +2,16 @@
 #include <typeindex>
 #include <unordered_map>
 #include <vector>
-
 #include "SparseSet/SparseSet.h"
 
 namespace Core::ECS
 {
-    class ISystem;
+    class System;
 
     class ECSManager
     {
     public:
-        ECSManager(const std::uint32_t maxEntities);
+        explicit ECSManager(const std::uint32_t maxEntities);
         ~ECSManager() = default;
 
         static ECSManager* GetInstance();
@@ -38,11 +37,18 @@ namespace Core::ECS
             return componentTypeIndex;
         }
 
+        std::uint32_t GenerateEntityID();
+        void FreeEntityID(const std::uint32_t entityID);
+
+    private:
+        void CreateSystems();
+
     private:
         std::uint32_t m_maxEntities = 0;
 
         std::vector<ISparseSet*> m_componentPools;
-        std::vector<ISystem*> m_SystemsList;
-        std::unordered_map<std::type_index, ISystem*> m_SystemsMap;
+        std::vector<System*> m_SystemsList;
+        std::vector<std::uint32_t> m_entityFreeList;
+        std::unordered_map<std::type_index, System*> m_SystemsMap;
     };
 }

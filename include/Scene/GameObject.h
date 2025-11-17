@@ -1,7 +1,5 @@
 ﻿#pragma once
 #include <cstdint>
-#include <concepts>
-#include "Core/ECS/Component.h"
 #include "Core/GameScene.h"
 
 namespace Core
@@ -14,10 +12,11 @@ namespace Scene
     class GameObject
     {
     public:
-        GameObject(std::uint32_t someEntityID, Core::GameScene* someSceneReference);
-        ~GameObject();
+        GameObject(std::uint32_t someEntityID, Core::GameScene* someSceneReference) : m_entityID(someEntityID), m_sceneReference(someSceneReference){}
+        virtual ~GameObject();
 
         virtual void Update(const float deltaTime){}
+        [[nodiscard]] std::uint32_t GetEntityID() const { return m_entityID;}
 
     private:
         std::uint32_t m_entityID = -1;
