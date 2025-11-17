@@ -32,9 +32,8 @@ add_library(
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
                 ${VENDOR_INCLUDE_DIR}/glad/glad.c
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp
-        include/Core/ECS/Groups/ECSGroup.h
-        src/Core/ECS/Groups/ECSGroup.cpp
-        include/Core/ECS/Groups/Group.h)
+        include/Core/ECS/Components/ComponentFactory.h
+        include/Core/ECS/Components/Component.h)
 
 target_include_directories(
         ${ENGINE_BINARY_NAME}

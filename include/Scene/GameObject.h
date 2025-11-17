@@ -13,10 +13,25 @@ namespace Scene
     {
     public:
         GameObject(std::uint32_t someEntityID, Core::GameScene* someSceneReference) : m_entityID(someEntityID), m_sceneReference(someSceneReference){}
-        virtual ~GameObject();
+        virtual ~GameObject()
+        {
+            m_sceneReference = nullptr;
+        }
 
         virtual void Update(const float deltaTime){}
         [[nodiscard]] std::uint32_t GetEntityID() const { return m_entityID;}
+
+        template<typename T>
+        void AddComponent()
+        {
+            m_sceneReference->GetECSManager().AddComponent<T>(m_entityID);
+        }
+
+        template<typename T>
+        void RemoveComponent()
+        {
+            m_sceneReference->GetECSManager().RemoveComponent<T>(m_entityID);
+        }
 
     private:
         std::uint32_t m_entityID = -1;

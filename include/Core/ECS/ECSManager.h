@@ -2,6 +2,7 @@
 #include <typeindex>
 #include <unordered_map>
 #include <vector>
+#include "Components/ComponentFactory.h"
 #include "SparseSet/SparseSet.h"
 
 namespace Core::ECS
@@ -19,22 +20,28 @@ namespace Core::ECS
         template <typename T>
         ISparseSet& GetComponentPool()
         {
-            std::uint32_t index = GetComponentIndex<T>();
-            return *m_componentPools[index];
+            return *m_componentPoolMap[std::type_index(typeid(T))];
         }
 
         template<typename T>
-        std::uint32_t RegisterComponent()
+        void RegisterComponent()
         {
-            m_componentPools.push_back(new SparseSet<T>(m_maxEntities));
-            return m_componentPools.size()-1;
+            m_ComponentFactory.RegisterComponent<T>();
+            m_componentPoolMap[std::type_index(typeid(T))] = new SparseSet<T>(m_maxEntities);
         }
 
         template<typename T>
-        std::uint32_t GetComponentIndex()
+        void AddComponent(const std::uint32_t someEntityID)
         {
-            static std::uint32_t componentTypeIndex = GetInstance()->RegisterComponent<T>();
-            return componentTypeIndex;
+            dynamic_cast<SparseSet<T>*>(m_componentPoolMap[std::type_index(typeid(T))])
+            ->AddComponentToEntity(someEntityID, m_ComponentFactory.CreateComponent<T>());
+        }
+
+        template<typename T>
+        void RemoveComponent(const std::uint32_t someEntityID)
+        {
+            dynamic_cast<SparseSet<T>*>(m_componentPoolMap[std::type_index(typeid(T))])
+            ->RemoveComponentFromEntity(someEntityID);
         }
 
         std::uint32_t GenerateEntityID();
@@ -46,9 +53,10 @@ namespace Core::ECS
     private:
         std::uint32_t m_maxEntities = 0;
 
-        std::vector<ISparseSet*> m_componentPools;
         std::vector<System*> m_SystemsList;
         std::vector<std::uint32_t> m_entityFreeList;
-        std::unordered_map<std::type_index, System*> m_SystemsMap;
+        std::unordered_map<std::type_index, ISparseSet*> m_componentPoolMap;
+
+        Components::ComponentFactory m_ComponentFactory;
     };
 }

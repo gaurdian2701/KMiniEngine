@@ -14,9 +14,11 @@ namespace Core
         explicit GameScene(const std::uint32_t maxEntitiesInScene);
         ~GameScene() = default;
 
+        void RegisterComponents();
         void Update(const float deltaTime);
 
         ECS::ECSManager& GetECSManager();
+
         Scene::GameObject* CreateGameObject();
         void DeleteGameObject(Scene::GameObject* gameObject);
 

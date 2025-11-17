@@ -6,7 +6,7 @@
 namespace Core::ECS
 {
 	template<typename ComponentTypeUsedBySparseSet>
-	class SparseSet : ISparseSet
+	class SparseSet : public ISparseSet
 	{
 	public:
 		SparseSet(const std::uint32_t someMaxEntityCount) : m_maxEntityCount(someMaxEntityCount)
@@ -30,7 +30,7 @@ namespace Core::ECS
 			m_sparseEntityArray[entityID] = static_cast<std::uint32_t>(m_denseEntityArray.size()-1);
 		}
 
-		void RemoveComponentFromEntity(const std::uint32_t entityID)
+		void RemoveComponentFromEntity(const std::uint32_t entityID) override
 		{
 			const auto swappableLastEntityIndex = m_denseEntityArray.back();
 
