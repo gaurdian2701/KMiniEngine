@@ -43,6 +43,16 @@ namespace Core::ECS
 			m_sparseEntityArray[entityID] = -1;
 		}
 
+		std::vector<std::uint32_t>& GetSparseEntityArray() override
+		{
+			return m_sparseEntityArray;
+		}
+
+		std::vector<std::uint32_t>& GetDenseEntityArray() override
+		{
+			return m_denseEntityArray;
+		}
+
 	private:
 		std::uint32_t m_maxEntityCount;
 

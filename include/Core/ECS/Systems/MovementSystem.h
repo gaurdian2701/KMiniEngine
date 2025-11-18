@@ -1,10 +1,11 @@
 ﻿#pragma once
 #include <cstdint>
-#include "System.h"
+#include "SystemBase.h"
+#include "Core/ECS/Components/Transform.h"
 
 namespace Core::ECS::Systems
 {
-    class MovementSystem : public System
+    class MovementSystem : public SystemBase<Components::Transform>
     {
     public:
         explicit MovementSystem(const std::uint32_t maxEntities);

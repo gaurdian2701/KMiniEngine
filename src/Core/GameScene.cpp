@@ -1,4 +1,6 @@
 ﻿#include "Core/GameScene.h"
+
+#include "Core/ECS/Components/Rigidbody.h"
 #include "Scene/GameObject.h"
 #include "Core/ECS/Components/Transform.h"
 
@@ -11,6 +13,7 @@ Core::GameScene::GameScene(const std::uint32_t maxEntitiesInScene) : m_ECSManage
 void Core::GameScene::RegisterComponents()
 {
 	m_ECSManager.RegisterComponent<ECS::Components::Transform>();
+	m_ECSManager.RegisterComponent<ECS::Components::Rigidbody>();
 }
 
 void Core::GameScene::Update(const float deltaTime)

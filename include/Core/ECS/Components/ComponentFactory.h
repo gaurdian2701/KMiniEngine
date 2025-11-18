@@ -5,7 +5,6 @@
 #include <typeinfo>
 #include <unordered_map>
 
-#include "Components/Transform.h"
 
 namespace Core::ECS::Components
 {

@@ -37,7 +37,10 @@ std::uint32_t Core::ECS::ECSManager::GenerateEntityID()
 
 void Core::ECS::ECSManager::FreeEntityID(const std::uint32_t entityID)
 {
-	m_entityFreeList.push_back(entityID);
+	if (std::find(m_entityFreeList.begin(), m_entityFreeList.end(), entityID) == m_entityFreeList.end())
+	{
+		m_entityFreeList.push_back(entityID);
+	}
 }
 
 
