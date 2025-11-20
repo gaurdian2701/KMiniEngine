@@ -33,9 +33,10 @@ add_library(
                 ${VENDOR_INCLUDE_DIR}/glad/glad.c
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp
         include/Core/ECS/Components/ComponentFactory.h
-        include/Core/ECS/Components/Rigidbody.h
+        include/Assets/Components/Rigidbody.h
         include/Core/ECS/Components/ComponentBitset.h
-        include/Core/ECS/Systems/ISystem.h)
+        include/Core/ECS/Systems/System.h
+)
 
 target_include_directories(
         ${ENGINE_BINARY_NAME}

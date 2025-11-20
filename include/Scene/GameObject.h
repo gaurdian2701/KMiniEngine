@@ -34,6 +34,12 @@ namespace Scene
             m_sceneReference->GetECSManager().RemoveComponent<T>(m_entityID);
         }
 
+        template<typename T>
+        T& GetComponent()
+        {
+            return m_sceneReference->GetECSManager().GetComponent<T>(m_entityID);
+        }
+
     private:
         std::uint32_t m_entityID = -1;
         Core::GameScene* m_sceneReference = nullptr;

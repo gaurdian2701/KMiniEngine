@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <iostream>
 
-namespace Core::ECS::Components
+namespace Assets::Components
 {
     struct Transform
     {

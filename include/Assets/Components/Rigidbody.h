@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace Core::ECS::Components
+namespace Assets::Components
 {
 	struct Rigidbody
 	{

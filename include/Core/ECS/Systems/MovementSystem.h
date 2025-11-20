@@ -1,16 +1,21 @@
 ﻿#pragma once
-#include <cstdint>
-#include "SystemBase.h"
-#include "Core/ECS/Components/Transform.h"
+#include "Core/ECS/ECSManager.h"
+#include "../../../Assets/Components/Transform.h"
+#include "System.h"
+
 
 namespace Core::ECS::Systems
 {
-    class MovementSystem : public SystemBase<Components::Transform>
+    class MovementSystem : public System
     {
     public:
-        explicit MovementSystem(const std::uint32_t maxEntities);
+        MovementSystem() = default;
         void BeginSystem() override;
         void UpdateSystem() override;
         void EndSystem() override;
+
+    private:
+        std::tuple<std::vector<Assets::Components::Transform>&> m_interestedComponents =
+            ECSManager::GetInstance()->QueryDenseComponentArrays<Assets::Components::Transform>();
     };
 }

@@ -53,6 +53,11 @@ namespace Core::ECS
 			return m_denseEntityArray;
 		}
 
+		std::vector<ComponentTypeUsedBySparseSet>& GetDenseComponentArray()
+		{
+			return m_denseComponentArray;
+		}
+
 	private:
 		std::uint32_t m_maxEntityCount;
 

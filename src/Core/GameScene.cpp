@@ -1,27 +1,39 @@
 ﻿#include "Core/GameScene.h"
 
-#include "Core/ECS/Components/Rigidbody.h"
+#include "../../include/Assets/Components/Rigidbody.h"
 #include "Scene/GameObject.h"
-#include "Core/ECS/Components/Transform.h"
+#include "../../include/Assets/Components/Transform.h"
 
 Core::GameScene::GameScene(const std::uint32_t maxEntitiesInScene) : m_ECSManager(maxEntitiesInScene)
 {
 	m_gameObjectsInScene.reserve(maxEntitiesInScene);
 	RegisterComponents();
+	m_ECSManager.InitializeManager();
 }
 
 void Core::GameScene::RegisterComponents()
 {
-	m_ECSManager.RegisterComponent<ECS::Components::Transform>();
-	m_ECSManager.RegisterComponent<ECS::Components::Rigidbody>();
+	m_ECSManager.RegisterComponent<Assets::Components::Transform>();
+	m_ECSManager.RegisterComponent<Assets::Components::Rigidbody>();
 }
 
 void Core::GameScene::Update(const float deltaTime)
+{
+	UpdateGameObjects(deltaTime);
+	UpdateECSManager();
+}
+
+void Core::GameScene::UpdateGameObjects(const float deltaTime)
 {
 	for (auto& gameObject : m_gameObjectsInScene)
 	{
 		gameObject->Update(deltaTime);
 	}
+}
+
+void Core::GameScene::UpdateECSManager()
+{
+	m_ECSManager.UpdateManager();
 }
 
 Core::ECS::ECSManager& Core::GameScene::GetECSManager()

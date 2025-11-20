@@ -1,18 +1,24 @@
 ﻿#include "Core/ECS/Systems/MovementSystem.h"
 #include "Core/ECS/ECSManager.h"
-#include "Core/ECS/Components/Transform.h"
-
-Core::ECS::Systems::MovementSystem::MovementSystem(const std::uint32_t maxEntities) : SystemBase(maxEntities) {}
+#include "Assets/Components/Transform.h"
 
 void Core::ECS::Systems::MovementSystem::BeginSystem()
 {
-
 }
 
 void Core::ECS::Systems::MovementSystem::UpdateSystem()
 {
+	auto& entities = ECSManager::GetInstance()->GetSmallestEntityArray<Assets::Components::Transform>();
 
+	for (auto& entity : entities)
+	{
+		auto& [transformComponent] = m_interestedComponents;
+		transformComponent[entity].PositionVector.x = 1;
+	}
 }
 
-void Core::ECS::Systems::MovementSystem::EndSystem(){}
+void Core::ECS::Systems::MovementSystem::EndSystem()
+{
+
+}
 

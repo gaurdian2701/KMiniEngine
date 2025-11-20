@@ -10,10 +10,7 @@
 
 namespace Core::ECS
 {
-    namespace Systems
-    {
-        class ISystem;
-    }
+    class System;
 
     constexpr std::size_t MAX_COMPONENT_TYPES = 32;
 
@@ -22,6 +19,8 @@ namespace Core::ECS
     public:
         explicit ECSManager(const std::uint32_t maxEntities);
         ~ECSManager() = default;
+        void InitializeManager();
+        void UpdateManager();
 
         static ECSManager* GetInstance();
 
@@ -52,6 +51,12 @@ namespace Core::ECS
             ->RemoveComponentFromEntity(someEntityID);
         }
 
+        template<typename T>
+        T& GetComponent(std::uint32_t someEntityID)
+        {
+            return GetComponentPool<T>()->GetDenseComponentArray()[someEntityID];
+        }
+
         template<typename FirstComponentType, typename ... ComponentType>
         std::vector<std::uint32_t>& GetSmallestEntityArray()
         {
@@ -72,6 +77,14 @@ namespace Core::ECS
             return *smallestEntityArray;
         }
 
+        template<typename FirstComponentType, typename ... ComponentTypes>
+        std::tuple<std::vector<FirstComponentType>&, std::vector<ComponentTypes>& ...> QueryDenseComponentArrays()
+        {
+            return std::forward_as_tuple(
+                GetComponentPool<FirstComponentType>()->GetDenseComponentArray(),
+                GetComponentPool<ComponentTypes>()->GetDenseComponentArray() ...);
+        }
+
         static std::size_t GenerateIndex()
         {
             static std::size_t index = 0;
@@ -89,12 +102,12 @@ namespace Core::ECS
         void FreeEntityID(const std::uint32_t entityID);
 
     private:
-        void CreateSystems();
+        void InitializeSystems();
 
     private:
         std::uint32_t m_maxEntities = 0;
 
-        std::vector<Systems::ISystem*> m_SystemsList;
+        std::vector<System*> m_SystemsList;
         std::vector<std::uint32_t> m_entityFreeList;
         std::unordered_map<std::type_index, ISparseSet*> m_componentPoolMap;
         Components::ComponentFactory m_ComponentFactory;

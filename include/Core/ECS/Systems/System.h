@@ -1,10 +1,12 @@
 ﻿#pragma once
 
-namespace Core::ECS::Systems
+namespace Core::ECS
 {
-	class ISystem
+	class System
 	{
 	public:
+		System() = default;
+		virtual ~System() {}
 		virtual void BeginSystem() = 0;
 		virtual void UpdateSystem() = 0;
 		virtual void EndSystem() = 0;

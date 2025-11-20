@@ -23,6 +23,10 @@ namespace Core
         void DeleteGameObject(Scene::GameObject* gameObject);
 
     private:
+        void UpdateGameObjects(const float deltaTime);
+        void UpdateECSManager();
+
+    private:
         ECS::ECSManager m_ECSManager;
         std::vector<Scene::GameObject*> m_gameObjectsInScene;
     };
