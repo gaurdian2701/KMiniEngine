@@ -1,13 +1,15 @@
 #pragma once
 #include <string>
-#include <iostream>
 
 namespace IO::FileSystem
 {
 	class FileHandler
 	{
 	public:
-		static bool OpenShaderFile(std::string& shaderString, const std::string& shaderFilePath);
+		FileHandler() = default;
+		~FileHandler() = default;
+
+		static bool OpenFile(std::string& fileString, const std::string& filePath);
 	};
 }
 

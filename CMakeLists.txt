@@ -36,6 +36,7 @@ add_library(
         include/Assets/Components/Rigidbody.h
         include/Core/ECS/Components/ComponentBitset.h
         include/Core/ECS/Systems/System.h
+        include/Core/EngineSystems.h
 )
 
 target_include_directories(

@@ -13,12 +13,14 @@ namespace Rendering::Shading
 	class ShaderHandler
 	{
 	public:
-		ShaderHandler(IO::FileSystem::FileHandler& fileHandler);
+		ShaderHandler() = default;
 		Shader* GetShader(const std::string& filePath);
 
 	private:
 		std::unordered_map<std::string, Shader*> m_shaderDictionary;
 
-		void TryLoadShader(IO::FileSystem::FileHandler& fileHandler, const std::string& filePath, SHADER_TYPE shaderType);
+		void TryLoadShader(const IO::FileSystem::FileHandler& fileHandler,
+			const std::string& filePath,
+			const SHADER_TYPE shaderType);
 	};
 }

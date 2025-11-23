@@ -8,7 +8,7 @@ namespace Rendering
     //SCREEN CONFIGS
     const int SCREEN_WIDTH = 1000;
     const int SCREEN_HEIGHT = 800;
-    const glm::vec4 BACKGROUND_COLOUR(0.7f, 0.6f, 0.3f, 0.9f);
+    const glm::vec4 BACKGROUND_COLOUR(0.0f, 0.0f, 0.0f, 1.0f);
 
     //CAMERA CONFIGS
     const float CAMERA_SPEED = 5.0f;

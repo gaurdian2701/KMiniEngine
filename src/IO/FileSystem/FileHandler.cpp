@@ -1,8 +1,9 @@
 #include "IO/FileSystem/FileHandler.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
-bool IO::FileSystem::FileHandler::OpenShaderFile(std::string& shaderString, const std::string& shaderFilePath)
+bool IO::FileSystem::FileHandler::OpenFile(std::string& fileString, const std::string& filePath)
 {
 	std::ifstream ShaderFileStream;
 
@@ -12,7 +13,7 @@ bool IO::FileSystem::FileHandler::OpenShaderFile(std::string& shaderString, cons
 
 	try
 	{
-		ShaderFileStream.open(shaderFilePath);
+		ShaderFileStream.open(filePath);
 		shaderStringStream << ShaderFileStream.rdbuf();
 		ShaderFileStream.close();
 	}
@@ -22,6 +23,6 @@ bool IO::FileSystem::FileHandler::OpenShaderFile(std::string& shaderString, cons
 		return false;
 	}
 
-	shaderString = shaderStringStream.str();
+	fileString = shaderStringStream.str();
 	return true;
 }
