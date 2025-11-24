@@ -1,8 +1,7 @@
 ﻿#include "Core/GameScene.h"
-
-#include "../../include/Assets/Components/Rigidbody.h"
 #include "Scene/GameObject.h"
-#include "../../include/Assets/Components/Transform.h"
+#include "Assets/Components/Transform.h"
+#include "Assets/Components/Renderer2D.h"
 
 Core::GameScene::GameScene(const std::uint32_t maxEntitiesInScene) : m_ECSManager(maxEntitiesInScene)
 {
@@ -14,7 +13,7 @@ Core::GameScene::GameScene(const std::uint32_t maxEntitiesInScene) : m_ECSManage
 void Core::GameScene::RegisterComponents()
 {
 	m_ECSManager.RegisterComponent<Assets::Components::Transform>();
-	m_ECSManager.RegisterComponent<Assets::Components::Rigidbody>();
+	m_ECSManager.RegisterComponent<Assets::Components::Renderer2D>();
 }
 
 void Core::GameScene::Update(const float deltaTime)

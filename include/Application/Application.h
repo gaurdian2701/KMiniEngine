@@ -12,7 +12,7 @@ class Renderer;
 class Window;
 
 extern void BeginApplication();
-extern void UpdateApplication();
+extern void UpdateApplication(const float deltaTime);
 extern void EndApplication();
 
 class Application
@@ -38,7 +38,7 @@ public:
 
 private:
 	void PushLayers();
-	void AttachAllLayers();
+	void AttachAllLayers() const;
 	void UpdateLayerList();
 	void DetachAllLayers();
 	void CloseGLFWWindow();

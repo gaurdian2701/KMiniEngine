@@ -6,8 +6,10 @@ namespace IO::FileSystem
 	class FileHandler
 	{
 	public:
-		FileHandler() = default;
+		FileHandler();
 		~FileHandler() = default;
+
+		static FileHandler* GetInstance();
 
 		static bool OpenFile(std::string& fileString, const std::string& filePath);
 	};

@@ -1,5 +1,9 @@
 ﻿#pragma once
 #include <iostream>
+#include <glm/mat4x4.hpp>
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/quaternion.hpp"
+#include "glm/ext/matrix_transform.hpp"
 
 namespace Assets::Components
 {
@@ -16,6 +20,7 @@ namespace Assets::Components
         {
             PositionVector = other.PositionVector;
             RotationVector = other.RotationVector;
+            ScaleVector = other.ScaleVector;
         }
 
         //Move Assignment operator
@@ -34,6 +39,18 @@ namespace Assets::Components
         {
             PositionVector = other.PositionVector;
             RotationVector = other.RotationVector;
+        }
+
+        glm::mat4 GetModelMatrix()
+        {
+            glm::mat4 translationMatrix = glm::mat4(1.0f);
+            translationMatrix = glm::translate(translationMatrix, glm::vec3(PositionVector.x, PositionVector.y, PositionVector.z));
+            glm::mat4 rotationMatrix = glm::mat4(1.0f);
+            rotationMatrix = glm::toMat4(glm::quat(glm::vec3(RotationVector.x, RotationVector.y, RotationVector.z)));
+            glm::mat4 scaleMatrix = glm::mat4(1.0f);
+            scaleMatrix = glm::scale(scaleMatrix, glm::vec3(ScaleVector.x, ScaleVector.y, ScaleVector.z));
+
+            return translationMatrix * rotationMatrix * scaleMatrix;
         }
 
         struct Position
@@ -56,19 +73,34 @@ namespace Assets::Components
         {
             Rotation& operator=(const Rotation& other)
             {
-                yaw = other.yaw;
-                pitch = other.pitch;
-                roll = other.roll;
+                x = other.x;
+                y = other.y;
+                z = other.z;
 
                 return *this;
             }
 
-            float yaw = 0.0f;
-            float pitch = 0.0f;
-            float roll = 0.0f;
+            float x = 0.0f;
+            float y = 0.0f;
+            float z = 0.0f;
+        };
+
+        struct Scale
+        {
+            Scale&  operator=(const Scale& other)
+            {
+                x = other.x;
+                y = other.y;
+                z = other.z;
+            }
+
+            float x = 1.0f;
+            float y = 1.0f;
+            float z = 1.0f;
         };
 
         Position PositionVector;
         Rotation RotationVector;
+        Scale ScaleVector;
     };
 }

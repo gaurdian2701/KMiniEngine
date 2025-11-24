@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Core/ECS/ECSManager.h"
-#include "../../../Assets/Components/Transform.h"
+#include "Assets/Components/Transform.h"
 #include "System.h"
 
 

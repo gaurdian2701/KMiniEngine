@@ -12,8 +12,8 @@ void Core::ECS::Systems::MovementSystem::UpdateSystem()
 
 	for (auto& entity : entities)
 	{
-		auto& [transformComponent] = m_interestedComponents;
-		transformComponent[entity].PositionVector.x = 1;
+		auto& [transformComponentArray] = m_interestedComponents;
+		transformComponentArray[entity].PositionVector.x = 1;
 	}
 }
 

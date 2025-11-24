@@ -1,4 +1,7 @@
 #include "Application/Application.h"
+
+#include <chrono>
+
 #include "Core/Layer.h"
 #include "Application/Window.h"
 #include <iostream>
@@ -43,20 +46,26 @@ void Application::PushLayers()
 	PushLayer<Debugging::ImGUI::ImGUILayer>();
 }
 
-void Application::AttachAllLayers()
+void Application::AttachAllLayers() const
 {
-	for (uint8_t i = 0; i < LayerList.size(); i++)
+	for (auto& layer : LayerList)
 	{
-		LayerList[i]->OnAttach();
+		layer->OnAttach();
 	}
 }
 
 void Application::Run()
 {
 	BeginApplication();
+	auto lastFrameTime = std::chrono::high_resolution_clock::now();
+
 	while (!glfwWindowShouldClose(MainWindow->GetGLFWWindow()))
 	{
-		UpdateApplication();
+		auto currentFrameTime = std::chrono::high_resolution_clock::now();
+		std::chrono::duration<float> deltaTime = currentFrameTime - lastFrameTime;
+		lastFrameTime = currentFrameTime;
+
+		UpdateApplication(deltaTime.count());
 
 		MainWindow->PreUpdate();
 		UpdateLayerList();
@@ -69,14 +78,11 @@ void Application::Run()
 
 void Application::UpdateLayerList()
 {
-	for (uint32_t i = 0; i < LayerList.size(); i++)
+	for (auto& layer : LayerList)
 	{
-		if (LayerList[i] != nullptr)
-		{
-			LayerList[i]->Update();
-			LayerList[i]->Render();
-			LayerList[i]->ProcessInput();
-		}
+		layer->Update();
+		layer->Render();
+		layer->ProcessInput();
 	}
 }
 

@@ -3,6 +3,25 @@
 #include <sstream>
 #include <iostream>
 
+static IO::FileSystem::FileHandler* FileHandlerInstance = nullptr;
+
+IO::FileSystem::FileHandler::FileHandler()
+{
+	if (FileHandlerInstance == nullptr)
+	{
+		FileHandlerInstance = this;
+	}
+	else
+	{
+		delete this;
+	}
+}
+
+IO::FileSystem::FileHandler* IO::FileSystem::FileHandler::GetInstance()
+{
+	return FileHandlerInstance;
+}
+
 bool IO::FileSystem::FileHandler::OpenFile(std::string& fileString, const std::string& filePath)
 {
 	std::ifstream ShaderFileStream;
