@@ -14,7 +14,12 @@ add_library(
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/GameScene.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ECSManager.cpp
@@ -40,6 +45,7 @@ target_link_libraries(
                 ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/glfw3.lib
                 ${CMAKE_CURRENT_SOURCE_DIR}/vendor/lib/assimp-vc143-mtd.lib)
 
-set_target_properties(${ENGINE_BINARY_NAME}
-        PROPERTIES
-            LINKER_LANGUAGE CXX)
+set_target_properties(
+        ${ENGINE_BINARY_NAME}
+            PROPERTIES
+                LINKER_LANGUAGE CXX)

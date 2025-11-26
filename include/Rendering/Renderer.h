@@ -6,10 +6,8 @@ namespace Rendering
 	class Renderer
 	{
 	public:
-		Renderer();
+		Renderer() = default;
 		~Renderer() = default;
-
-		static Renderer* GetInstance();
 
 		Shading::ShaderHandler& GetShaderHandler();
 

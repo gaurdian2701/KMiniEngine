@@ -2,6 +2,8 @@
 #include <iostream>
 #include <glm/mat4x4.hpp>
 #include "glm/gtc/quaternion.hpp"
+
+#define GLM_ENABLE_EXPERIMENTAL
 #include "glm/gtx/quaternion.hpp"
 #include "glm/ext/matrix_transform.hpp"
 
@@ -92,6 +94,8 @@ namespace Assets::Components
                 x = other.x;
                 y = other.y;
                 z = other.z;
+
+                return *this;
             }
 
             float x = 1.0f;

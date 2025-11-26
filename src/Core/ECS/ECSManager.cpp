@@ -9,10 +9,6 @@ Core::ECS::ECSManager::ECSManager(const std::uint32_t maxEntities) : m_maxEntiti
 	{
 		ECSManagerInstance = this;
 	}
-	else
-	{
-		delete this;
-	}
 }
 
 void Core::ECS::ECSManager::InitializeManager()

@@ -1,10 +1,10 @@
-#include "Shader.h"	
+#include "Rendering/Shading/Shader.h"
 #include <iostream>
 #include <glad/glad.h>
 #include <cassert>
 
 
-Shader::Shader(const char* shaderSource, SHADER_TYPE shaderType)
+Rendering::Shading::Shader::Shader(const char* shaderSource, SHADER_TYPE shaderType)
 {
 	if (shaderType == SHADER_TYPE::VERTEX)
 	{
@@ -20,17 +20,17 @@ Shader::Shader(const char* shaderSource, SHADER_TYPE shaderType)
 	TryShaderCompilation();
 }
 
-Shader::~Shader()
+Rendering::Shading::Shader::~Shader()
 {
 	glDeleteShader(m_shaderID);
 }
 
-unsigned int Shader::GetShaderID() const
+unsigned int Rendering::Shading::Shader::GetShaderID() const
 {
 	return m_shaderID;
 }
 
-void Shader::TryShaderCompilation()
+void Rendering::Shading::Shader::TryShaderCompilation()
 {
 	glCompileShader(m_shaderID);
 	GLint shaderDidCompile = 0;

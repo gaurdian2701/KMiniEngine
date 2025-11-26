@@ -1,7 +1,6 @@
 ﻿#include "IO/Input/InputSystem.h"
 #include <iostream>
 
-
 static IO::Input::InputSystem* InputSystemInstance = nullptr;
 
 IO::Input::InputSystem::InputSystem()

@@ -11,10 +11,6 @@ IO::FileSystem::FileHandler::FileHandler()
 	{
 		FileHandlerInstance = this;
 	}
-	else
-	{
-		delete this;
-	}
 }
 
 IO::FileSystem::FileHandler* IO::FileSystem::FileHandler::GetInstance()

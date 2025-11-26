@@ -5,7 +5,21 @@
 
 namespace Core
 {
-	inline auto MainFileHandler = IO::FileSystem::FileHandler();
-	inline auto MainRenderer = Rendering::Renderer();
-	inline auto MainEventSystem = new Events::EventSystem();
+	inline IO::FileSystem::FileHandler& GetFileHandler()
+	{
+		static IO::FileSystem::FileHandler MainFileHandler;
+		return MainFileHandler;
+	}
+
+	inline Rendering::Renderer& GetRenderer()
+	{
+		static Rendering::Renderer MainRenderer;
+		return MainRenderer;
+	}
+
+	inline Events::EventSystem& GetEventSystem()
+	{
+		static Events::EventSystem MainEventSystem;
+		return MainEventSystem;
+	}
 }

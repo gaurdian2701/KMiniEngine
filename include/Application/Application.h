@@ -46,6 +46,7 @@ private:
 
 protected:
 	static Application* ApplicationInstance;
+	Window* MainWindow = nullptr;
 
 private:
 	std::vector<std::unique_ptr<Core::Layer>> LayerList;
