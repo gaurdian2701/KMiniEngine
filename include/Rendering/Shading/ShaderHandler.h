@@ -22,7 +22,5 @@ namespace Rendering::Shading
 
 	private:
 		std::unordered_map<std::string, Shader*> m_shaderDictionary;
-
-
 	};
 }

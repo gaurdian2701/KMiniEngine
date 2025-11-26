@@ -49,7 +49,6 @@ protected:
 
 private:
 	std::vector<std::unique_ptr<Core::Layer>> LayerList;
-	Window* MainWindow = nullptr;
 };
 
 Application& CreateApplication();

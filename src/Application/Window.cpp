@@ -28,7 +28,6 @@ Window::~Window()
 	glfwTerminate();
 }
 
-
 void Window::InitContextCallbacks()
 {
 	glfwMakeContextCurrent(m_window);

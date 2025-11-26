@@ -12,109 +12,105 @@ Application* Application::ApplicationInstance = nullptr;
 
 Application::Application()
 {
-	if (ApplicationInstance != nullptr)
-	{
-		std::cout << "Application already exists!" << "\n";
-	}
-	else
-	{
-		ApplicationInstance = this;
-	}
+    if (ApplicationInstance != nullptr)
+    {
+        std::cout << "Application already exists!" << "\n";
+    }
+    else
+    {
+        ApplicationInstance = this;
+    }
 
-	MainWindow = new Window(1000, 800);
 }
 
 Application::~Application()
 {
-	delete MainWindow;
 }
 
 Application* Application::GetInstance()
 {
-	return ApplicationInstance;
+    return ApplicationInstance;
 }
 
 void Application::Init()
 {
-	PushLayers();
-	AttachAllLayers();
+    PushLayers();
+    AttachAllLayers();
 }
 
 void Application::PushLayers()
 {
-	PushLayer<IO::Input::InputSystem>();
-	PushLayer<Debugging::ImGUI::ImGUILayer>();
+    PushLayer<Debugging::ImGUI::ImGUILayer>();
 }
 
 void Application::AttachAllLayers() const
 {
-	for (auto& layer : LayerList)
-	{
-		layer->OnAttach();
-	}
+    for (auto& layer : LayerList)
+    {
+        layer->OnAttach();
+    }
 }
 
 void Application::Run()
 {
-	BeginApplication();
-	auto lastFrameTime = std::chrono::high_resolution_clock::now();
+    BeginApplication();
+    auto lastFrameTime = std::chrono::high_resolution_clock::now();
 
-	while (!glfwWindowShouldClose(MainWindow->GetGLFWWindow()))
-	{
-		auto currentFrameTime = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<float> deltaTime = currentFrameTime - lastFrameTime;
-		lastFrameTime = currentFrameTime;
+    while (true)
+    {
+        auto currentFrameTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> deltaTime = currentFrameTime - lastFrameTime;
+        lastFrameTime = currentFrameTime;
 
-		UpdateApplication(deltaTime.count());
+        UpdateApplication(deltaTime.count());
 
-		MainWindow->PreUpdate();
-		UpdateLayerList();
-		MainWindow->PostUpdate();
-	}
+        //Pre Updates here
+        UpdateLayerList();
 
-	EndApplication();
-	InitiateShutdown();
+        //Post Updates here
+    }
+
+    EndApplication();
+    InitiateShutdown();
 }
 
 void Application::UpdateLayerList()
 {
-	for (auto& layer : LayerList)
-	{
-		layer->Update();
-		layer->Render();
-		layer->ProcessInput();
-	}
+    for (auto& layer : LayerList)
+    {
+        layer->Update();
+        layer->Render();
+        layer->ProcessInput();
+    }
 }
 
 std::vector<std::unique_ptr<Core::Layer>>& Application::GetLayerList()
 {
-	return LayerList;
+    return LayerList;
 }
 
 Window* Application::GetMainWindow()
 {
-	return MainWindow;
+    return nullptr;
 }
 
 void Application::DetachAllLayers()
 {
-	for (uint8_t i = 0; i < LayerList.size(); i++)
-	{
-		if (LayerList[i] != nullptr)
-		{
-			LayerList[i]->OnDetach();
-		}
-	}
+    for (uint8_t i = 0; i < LayerList.size(); i++)
+    {
+        if (LayerList[i] != nullptr)
+        {
+            LayerList[i]->OnDetach();
+        }
+    }
 }
 
 void Application::CloseGLFWWindow()
 {
-	glfwDestroyWindow(MainWindow->GetGLFWWindow());
-	glfwTerminate();
 }
 
 void Application::InitiateShutdown()
 {
-	DetachAllLayers();
-	CloseGLFWWindow();
+    DetachAllLayers();
+    CloseGLFWWindow();
 }

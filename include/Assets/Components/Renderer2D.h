@@ -41,5 +41,4 @@ namespace Assets::Components
         glm::vec3 Color = glm::vec3(1.0f, 0.0f, 0.0f);
         std::vector<float> vertices;
     };
-
 }

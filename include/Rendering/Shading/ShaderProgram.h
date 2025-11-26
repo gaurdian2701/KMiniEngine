@@ -16,7 +16,7 @@ namespace Rendering::Shading
 	class ShaderProgram
 	{
 	public:
-		ShaderProgram(Rendering::Shading::Shader* vertexShader, Rendering::Shading::Shader* fragmentShader);
+		ShaderProgram(Shader* vertexShader, Shader* fragmentShader);
 		~ShaderProgram();
 		void Use() const;
 		unsigned int GetID() const;

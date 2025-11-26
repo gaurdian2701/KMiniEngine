@@ -14,7 +14,6 @@ public:
 	void PostUpdate();
 	void ProcessInput();
 
-
 private:
 	GLFWwindow* m_window = nullptr;
 };

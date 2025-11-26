@@ -14,12 +14,7 @@ add_library(
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Application/Window.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Debugging/ImGUI/ImGUILayer.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/FileSystem/FileHandler.cpp
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Renderer.cpp
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Mesh.cpp
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/Resources/ModelLoading/Model.cpp
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/Scene/Camera/Camera.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Rendering/Shading/ShaderProgram.cpp
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/IO/Input/InputSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/Events/EventSystem.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/GameScene.cpp
                 ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ECS/ECSManager.cpp
@@ -31,15 +26,7 @@ add_library(
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_impl_opengl3.cpp
                 ${VENDOR_INCLUDE_DIR}/imgui/imgui_tables.cpp
                 ${VENDOR_INCLUDE_DIR}/glad/glad.c
-                ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp
-        include/Core/ECS/Components/ComponentFactory.h
-        include/Core/ECS/Components/ComponentBitset.h
-        include/Core/ECS/Systems/System.h
-        include/Core/EngineSystems.h
-        include/Assets/Components/Renderer2D.h
-        include/Core/ECS/Systems/RenderingSystem.h
-        src/Core/ECS/Systems/RenderingSystem.cpp
-)
+                ${VENDOR_INCLUDE_DIR}/imgui/imgui_widgets.cpp)
 
 target_include_directories(
         ${ENGINE_BINARY_NAME}

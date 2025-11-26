@@ -22,6 +22,5 @@ Rendering::Shading::Shader* Rendering::Shading::ShaderHandler::GetShader(const s
 	{
 		return nullptr;
 	}
-
 	return m_shaderDictionary[filePath];
 }
